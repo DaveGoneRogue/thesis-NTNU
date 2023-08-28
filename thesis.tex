@@ -1,32 +1,76 @@
-\documentclass[british,titlepage]{ntnuthesis}
+%\documentclass[british, titlepage, oneside]{ntnuthesis}
+\documentclass[british, oneside]{ntnuthesis}
 
-\title{Mathy stuff}
-\shorttitle{Math}
-\author{Preben Hast Sørli}
-%\shortauthor{CoPCSE$@$NTNU \& TWT}
-\date{\today}
+\usepackage{import}
+\usepackage{preamble/head_mk2}  % import allows for self made .sty files
 
-\addbibresource{thesis.bib}
+% Save the document enviroment to for saving to github
+% Turn on or off by setting the state of the boolean variable
+% To save without the chapter content, update the .gitgnore file with filenames
 
-\input{glossary.tex} % add glossary and acronym lists before document
-\input{preamble.tex}
-% --- Folder structure --- %
-    \usepackage{subfiles} 
-    % Allows compilation of each subfile, rather to compile everything at once
-    % Subfiles must have this file as option while using the documentclass subfile
-    % Loading a subfile is done with \subfile{"path-to-file"}
+\newif\ifSaveGit
+\SaveGitfalse  % \SaveGittrue sets the state of the boolean variable \ifdothat` to true, o.w. it's false already (or use \dothatfalse explicitly)
+
+% --- Import support files --- %
+    \input{support_files/glossary.tex}  % add glossary and acronym lists before document
+    \input{support_files/commands.tex}  % same but for commands
+    
+    % Bibliography file
+    %\addbibresource{support_files/Mastergrad.bib}
+
+    \ifSaveGit
+        \addbibresource{support_files/x_lorum_biblio.bib}
+    \else
+        \addbibresource{support_files/Mastergrad.bib}
+    \fi % Outer \fi
+% ---
+
+
+
+% title if using "titlepage" option in documentclass
+%\input{support_files/title_ntnu.tex}
 
 \begin{document}
 
-\tableofcontents
+    % --- Preliminaries --- %
+    \input{support_files/titlepage_max.tex}  % title for max titlepage
 
-%\printglossaries
+    %\setcounter{tocdepth}{2}
+    \tableofcontents
+    \printglossaries
 
-\chapter{Cofinality}
-\subfile{chapters/cofinality.tex}
-\chapter{Kan Extensions}
-\subfile{chapters/Kan.tex}
-\chapter{Sheaves and K-sheaves}
-\subfile{chapters/K-sheaves.tex}
-\printbibliography
+
+    % --- DOCUMENT START --- %
+    % --- NOTE: Folder structure --- %
+    % Allows compilation of each subfile, rather to compile everything at once
+    % Subfiles must have this file as option while using the documentclass subfile
+    % Loading a subfile is done with \subfile{"path-to-file"}
+    % ---
+    \ifSaveGit  
+        \chapter{Lorum Intro}
+            \subfile{chapters/xx_lorum_chap_1.tex}
+            %\subfile{chapters/introduction.tex}  % NTNU info 
+    \else
+        \chapter[]{Intro?}
+            \subfile{chapters/01_introduction.tex}
+
+        \chapter{The complex trigonometric system}
+            \subfile{chapters/02_cmplx_trig_system.tex}
+            \subfile{chapters/021_cmplx_trig_system.tex}
+    \fi
+
+    %\chapter{Intro?}
+    %    \subfile{chapters/01_introduction.tex}
+%
+    %\chapter{The complex trigonometric system}
+    %    \subfile{chapters/02_cmplx_trig_system.tex}
+    %    \subfile{chapters/021_cmplx_trig_system.tex}
+
+
+
+    \printbibliography
+    % Bibliography old
+    %\bibliographystyle{preamble/AGFstyle.bst}
+    %\bibliography{preamble/Mastergrad!.bib}
+
 \end{document}

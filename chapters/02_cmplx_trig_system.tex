@@ -1,0 +1,280 @@
+\documentclass[../thesis.tex]{subfiles}
+% Seperate preamble for this subfile. This preamble is loaded last, so it may be used to override various functions.
+
+% Normal comment
+% * Important information is highlighted
+% ! ALERT
+% ? Question
+% TODO stuff to do
+% // this is strikethrough, sh 
+
+
+\begin{document}
+
+% --- Section --- %
+% ------------------------------------------------------------------
+% ? \section[]{INtro ishh}
+% * Def complete i form av “and the linear span of $B$ is dense in $H$ relative to the $\|\cdot\|_H$-norm, meaning $\overline{\operatorname{span}(B)} = H$. (fundamental/total)"
+intro til orthogonal bases 
+
+We consider orthogonal sets with a focus on countable orthogonal sequences. As any set of nonzero orthognal vectors can be turned into an orthonormal set if each vector is divided by its length, the following results are stated for orthonormal sets for simplicity. 
+We begin with the following. Let $H$ be a hilbert space, and $\left\{ e_{n} \right\}_{n\in \mathbb{N}}$ denote a sequence of orthonormal vectors in $H$. Then the closed span, $\overline{\operatorname{span}}\left( \left\{ e_{n} \right\}_{n\in \mathbb{N}} \right)$, is a closed subspace of $H$. In connection with this, we can give an explicit formula for the orthogonal projection of a vector onto $\overline{\operatorname{span}}\left( \left\{ e_{n} \right\}_{n\in \mathbb{N}} \right)$. This is presented in the following theorem sourced from \cite{heilMetricsNormsInner2018}.
+
+
+\begin{theorem}\label{thrm:orthog_proj_formula_and_facts}
+    If $H$ is a Hilbert space and if $\left\{ e_{n} \right\}_{n\in \mathbb{N}}$ is an orthonormal sequence in $H$,  then the following statements hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item \label{eq:opfaf_a} Bessel's inequality holds for all $x \in H$. That is, 
+        \begin{equation}
+            \sum_{n=1}^{\infty} \left| \langle x, e_n \rangle \right|^2 \leq \| x\|^2 
+        \end{equation}
+        
+        \item \label{eq:opfaf:b} Let $c_n$ be scalars. If the following series converges in the norm of $H$, then for each $n \in \mathbb{N}$  the scalars $c_n= \langle x, e_n\rangle$. $$ x=\sum_{n=1}^\infty c_n e_n.$$
+        
+        \item \label{eq:opfaf_c} The following equivalence: 
+        \begin{equation}
+            \sum_{n=1}^{\infty} c_n e_n \text{ converges in norm of } H \Longleftrightarrow \sum_{n=1}^{\infty} \left| c_n \right|^2 < \infty.
+        \end{equation}
+        In this case the series $\sum_{n=1}^{\infty} c_n e_n$ converges unconditionally, meaning that it converges regardless of the ordering of the index set.
+        
+        \item \label{eq:opfaf_d} If $x \in H$, then 
+        \begin{equation} 
+            p= \sum_{n=1}^{\infty} \langle x, e_n \rangle e_n, 
+        \end{equation} 
+        is the orthogonal projection of $x$ onto  $\overline{\operatorname{span}} \left( \left\{ e_{n} \right\}_{n\in \mathbb{N}} \right) $, with
+        \begin{equation}
+            \| p\|^2 = \sum_{n=1}^{\infty} \left| \langle x,e_n \rangle \right|^2
+        \end{equation}
+        
+        \item \label{eq:opfaf_e} If $x \in H$, then 
+        \begin{equation}
+            x\in \overline{\operatorname{span}} \left( \left\{ e_{n} \right\}_{n\in \mathbb{N}} \right) \Longleftrightarrow x=\sum_{n=1}^{\infty} \langle x, e_n \rangle e_n \Longleftrightarrow \| x\|^2 = \sum_{n=1}^{\infty} \left| \langle x,e_n\rangle \right|^2
+        \end{equation}
+    \end{enumerate}
+\end{theorem}
+
+
+% ! Max Kommentar
+\textcolor{red}{poof}\\
+Intro, ONB
+
+
+\begin{theorem}\label{thrm:orthonormal_equivalences}
+    If $H$ is a Hilbert space and if $\left\{ e_{n} \right\}_{n\in \mathbb{N}}$ is an orthonormal sequence in $H$,  then the following are equivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item \label{eq:oe_a} $\left\{ e_{n} \right\}_{n\in \mathbb{N}}$ is complete. That is, $\overline{\operatorname{span}} \left( \left\{ e_{n} \right\}_{n\in \mathbb{N}} \right) = H$
+        
+        \item \label{eq:oe_b} $\left\{ e_{n} \right\}_{n\in \mathbb{N}}$ is a \emph{Schauder basis} for $H$. That is, for each $x\in H$ there exists a unique sequence  $(c_n)_{n\in\mathbb{N}}$ of scalars such that $x = \sum c_n x_n$.
+        
+        \item \label{eq:oe_c} If $x\in H$, then the following series converges in the norm of $H$. \begin{equation} \label{eq:orthonormal_equivalences_3} x=\sum_{n=1}^\infty \langle x,e_n\rangle e_n, \end{equation}
+        
+        \item \label{eq:oe_d} Plancherel's equality holds for all $x \in H$. That is, $$ \|x \|^2 = \sum_{n=1}^\infty \left| \langle x,e_n \rangle \right|^2.$$
+        
+        \item \label{eq:oe_e} Parseval's equality holds for all $x,y \in H$. That is, $$ \langle x,y \rangle = \sum_{n=1}^\infty \langle x,e_n \rangle \langle e_n,y \rangle $$
+    \end{enumerate}
+\end{theorem}
+
+% ! Max Kommentar
+\textcolor{red}{poof}
+
+
+Note that a sequence that satisfies any of the equivalent conditions in \cref{thrm:orthonormal_equivalences} is an orthonormal basis. We form the following definition.
+
+
+\begin{definition}
+    A countable infinite orthonormal sequence $\left\{ e_{n} \right\}_{n\in \mathbb{N}}$ that is complete in a Hilbert space $H$ is called an \emph{orthonormal basis} for $H$.
+\end{definition}
+
+Or more generally  / summary def
+
+\begin{definition}
+    Let $H$ be a Hilbert space. An \emph{orthonormal basis} $B$ is a countable infinite family $\{e_k\}_{k\in B}$ of elements of $H$ that are orthonormal and complete. That is, they are pairwise orthogonal, have norm one, and the linear span of $B$ is dense in $H$ relative to the $\|\cdot\|_H$-norm, meaning $\overline{\operatorname{span}(B)} = H$. 
+\end{definition}
+
+
+Orthonormal bases are a powerful tool. As stated in \cref{eq:orthonormal_equivalences_3}, it allows us to write
+\begin{equation}\label{eq:comletness_carracterization}
+    x= \sum_{n=1}^{\infty} \langle x, e_n \rangle e_n \quad \text{for every } x\in H,
+\end{equation}
+under the assumption that $\left\{ e_{n} \right\}_{n\in \mathbb{N}}$ \emph{is} an orthonormal basis for $H$.  By \cref{thrm:orthog_proj_formula_and_facts} we know that this series converges unconditionally, meaning that it converges whatever the ordering of the series is. The orthogonality implies that the 'decomposition' is unique, and in some sense one can say that \cref{eq:comletness_carracterization} \emph{characterises} completeness. %\cref{thrm:orthonormal_equivalences} gives several other equivalent and useful characterisations for complete orthonormal sequences.
+
+An equivalent restatement of completeness is that $\left\{ e_k \right\}$ is complete in $H$ if and only if $\langle x, e_k \rangle_{H} = 0$ for all $k\in B$ and some $x\in H$, then $x$ is the zero element of $H$. Since $B$ is an orthonormal set and $x$ is orthogonal to $B$, then $x$ is orthogonal to the closure of the linear span of $B$. As $\operatorname{span}(B)$ is dense in $H$ we have $\overline{\operatorname{span}}(B) = H$, and the only vector orthogonal to a dense linear subspace is the zero-vector. 
+
+% ikke skriv $x=\overrightarrow{0}$
+
+% Zero vector comment
+%Furthermore, given $\Omega \subset \mathbb{R}^d$ have finite positive lebesgue measure, and let $L^2(\Omega)$ be the corresponding Hilbert space of $L^2$ functions on $\Omega$. Completeness can be restated into showing that $f=0$, for $f \in L^2(\Omega)$, is the only solution to $\langle f,e_\lambda \rangle_{H} = 0$ for all $\lambda \in \Lambda$. This comes from the fact that the  only vector/function $v$ orthogonal to a dense linear subspace is the zero vector/function. That is to say, since $B$ is any orthonormal set/family, and $v$ is orthonormal to $B$, then $v$ is also orthogonal to $\overline{\operatorname{span}(B)}$ , which is the whole space $H$. Ref linmet bok og paperet om spectral pairs.
+
+% ? Note, the fact that the span of the basis vectors is dense implies that every vector in H can be written as the sum of an infinite series, and the orthogonality imply that the decomposition is unique.
+
+% ! Max Kommentar
+% overgang fra $\left\{ e_{n} \right\}_{n\in \mathbb{N}}$ til $\left\{ e_{\lambda} \right\}_{\lambda \in \mathbb{Z}}$ 
+
+
+% *--- Section --- %
+% *------------------------------------------------------------------
+\section{The complex trigonometric system in 1D}\label{sec:complx_trig_1d}
+
+Given $\lambda \in \mathbb{Z}$, the complex exponential of the frequency $\lambda$ is 
+\begin{equation}
+    e_{\lambda}(t) = e^{2 \pi i \lambda t} = \cos{(2 \pi \lambda t)} + i \sin{(2 \pi \lambda t)}, \quad t\in \mathbb{R}    
+\end{equation}
+The complex trigonometric system is the sequence
+\begin{equation}
+    \left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}} = \{ e^{2 \pi i \lambda t} \}_{\lambda \in \mathbb{Z}}    
+\end{equation}
+where the domain of $e_\lambda$ is the real line (the input $t$ is a real number), and the output is a complex number. Furthermore, let $\mathbb{T}=\{z\in \mathbb{C} : |z|=1\}$ be the unit circle in the complex plane, and note that each point $z\in\mathbb{T}$ is on the form $z=e^{2 \pi i t}$ for $t$ a real number, meaning that for an arbitrary $\lambda \in \mathbb{Z}$ we have
+\begin{equation}
+    \left|e_{\lambda}(x) \right|= |e^{2 \pi i \lambda t} | = 1 \quad \text{for all } t\in \mathbb{R} 
+\end{equation}
+Furthermore, observe that $e_\lambda$ is 1-\emph{periodic}, because
+\begin{equation}
+    e_\lambda(t+1) = e^{2 \pi i \lambda (t+1)} = e^{2 \pi i \lambda t} e^{2 \pi i \lambda} = e^{2 \pi i \lambda t} = e_\lambda(t)
+\end{equation}
+where we have used that
+\begin{equation}
+    e^{2 \pi i \lambda} = \cos(2 \pi \lambda) + i \sin(2 \pi \lambda) = 1+i0 = 1 \quad \text{for all } \lambda \in \mathbb{Z} 
+\end{equation}
+
+The 1-periodicity of $e_\lambda$ is important. If we know values of $e_\lambda(t)$ for $t$ on an interval of length $1$, we know the values for all points $t\in \mathbb{R}$. This allows us to restrict our domain from all of $\mathbb{R}$ to just the $t$´s that lie on the interval $[0,1]$, the unit interval.
+
+The complex trigonometric system is orthogonal. This follows from the following; As the complex exponential functions are continuous, they are also Lebesgue integrable on $[0,1]$. Let $e_{\lambda}, e_{\lambda'} \in \left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}}$ so that $\lambda \neq \lambda'$ and compute the inner product
+\begin{align*} 
+\langle e_{\lambda},e_{\lambda'} \rangle_{L^2([0,1])} 
+&= \int_0^1 e_{\lambda}(t)\overline{e_{\lambda'}(t)} dt\\ &= \int_0^1 e^{2 \pi i {\lambda}t} e^{-2 \pi i {\lambda'}t} dt\\
+&= \int_0^1 e^{2 \pi i (\lambda-\lambda')t} dt
+\end{align*}
+
+By substituting in $u= 2 \pi i (\lambda-\lambda')t$, and later using that $(\lambda-\lambda') \in \mathbb{Z}$ imply $e^{2 \pi i (\lambda-\lambda')} = 1$,  we get
+
+\begin{align*} 
+\int_0^1 e^{2 \pi i (\lambda-\lambda')t} dt 
+&= \int_0^{2 \pi i(\lambda-\lambda')} e^{u} \frac{du}{2 \pi i (\lambda-\lambda')}\\ 
+&=\frac{1}{2 \pi i (\lambda-\lambda')}\left( e^u  \big| _0^{2 \pi i (\lambda-\lambda')}\right)\\
+&=\frac{e^{2 \pi i(\lambda-\lambda')}-1}{2 \pi i (\lambda-\lambda')}\\ &=\frac{1-1}{2 \pi i (\lambda-\lambda')} \\
+&= 0
+\end{align*}
+
+Hence $\left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}}$ is orthogonal. Furthermore, if  $\lambda =\lambda'$ the inner product is the following
+
+\begin{align}\label{eq:exp_norm_one}
+    \| e_\lambda \|^2_{L^2([0,1])} 
+    = \langle e_{\lambda},e_{\lambda} \rangle_{L^2([0,1])} 
+    = \int_0^1 e^{2 \pi i (\lambda-\lambda)t} dt
+    = \int_0^1 e^{0} dt = t  \big| _0^{1}= 1
+\end{align}
+
+which shows that $\left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}}$ is not only orthogonal, it is also orthonormal. 
+
+
+% * ------------------------------------------------------------------
+% * BASIS PROOOF
+To show that $\left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}}$ is a basis, we must show that it is a complete sequence in the sense of \cref{thrm:orthonormal_equivalences} \cref{eq:oe_a}, which is that $\overline{\operatorname{span}} \left( \left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}} \right) = L^2{[0,1]}$.
+
+First, choose any function $f\in L^2([0,1])$ and fix a real number $\varepsilon >0$. Our goal is to show that there is a function $p \in \operatorname{span} \left( \left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}} \right)$ such that $\|f-p\|_{L^2([0,1])} < 3 \varepsilon$, which will imply completness from the equivalence of \cref{thrm:orthonormal_equivalences} \cref{eq:oe_c} and \cref{thrm:orthonormal_equivalences} \cref{eq:oe_a}.
+
+Let $C([0,1])$ denote the set of all continuous, scalar-valued functions whose domain is $[0,1]$:
+\begin{equation}
+    C([0,1])=\{f:[0,1] \rightarrow \mathbb{C}: f \text{ is continuous on } [0,1]\}.
+\end{equation}
+Since $C[0,1]$ is dense in $L^2([0,1])$ \cite{heilMetricsNormsInner2018}, we know that there exist a continuous function $g \in C[0,1]$ such that %$\| f-g \|_{L^2([0,1])} < \varepsilon$. If $g$ is the zero function, then we can take $p=0$ and we are done with the proof
+\begin{equation}
+    \| f-g \|_{L^2([0,1])}^2 = \int_0^1 \left|f(t)-g(t) \right|^2dt < \varepsilon^2
+\end{equation}
+% * BUILD UP TO h function 
+%If $g$ is the zero function, then we can take $p=0$ and we are done with the proof. Thus we consider the case where $g$ is not identically zero. Going forward, our goal is to show that $\left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}}$ is complete in the subspace $C_{\text{per}}[0,1]$ with respect to the $\|\cdot\|_u$-norm. Here, $C_{\text{per}}[0,1]$ is the set of all periodic, continuous, real-valued, functions on the interval $[0,1]$:
+If $g$ is the zero function, then we can take $p=0$ and we are done with the proof. Thus we consider the case where $g$ is not identically zero. Going forward, our goal is to show that $\left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}}$ is complete in the subspace $C_{\text{per}}[0,1]$ using the weierstrass theorem \cite{durenInvitationClassicalAnalysis2012}. Here, $C_{\text{per}}[0,1]$ is the set of all periodic, continuous, real-valued, functions on the interval $[0,1]$:
+\begin{equation*}
+C_{\text {per }}[0,1]=\{f \in C[0,1]: f(0)=f(1)\}.
+\end{equation*}
+We do not require that $g \in C_{\text{per}}[0,1]$, meaning that the requirement $g(0)=g(1)$ need not hold. Instead we will construct a function $h$ that belong to $C_{\text{per}}[0,1]$. Let  $\delta = \varepsilon^2/(8\|g\|_\infty)$, and $h$  be given by %, and which satisfies 
+%\begin{equation*}
+%    \| g-h \|_{L^2([0,1])}^2 = \int_0^1 \left|g(t)-h(t) \right|^2dt < \varepsilon^2.
+%\end{equation*}
+%Let  $\delta = \varepsilon^2/(8\|g\|_\infty)$, and $h$  be given by
+\begin{equation*}
+    h(t) = 
+    \begin{cases} 0, &  t=0,\\  
+        \text{linear}, &  0<t<0+\delta,\\ 
+        g(t), & 0+\delta \leq t \leq 1-\delta,\\ 
+        \text{linear}, &  1-\delta <t<1,\\ 
+        0, &  t=1,
+    \end{cases}
+\end{equation*}
+% kan lage formel for h på ax+b formel: $ -g(1-\delta) / \delta \cdot x + g(1-\delta)/ \delta $ <- dette er høyre side. $dy/dx \cdot x + b$
+as can be seen from Figure 1, on the interval $[0+\delta, 1-\delta]$ we have $g(t)-h(t)= 0$ for all $t$, and for all other values of $t$ the 'disance' is at worst 
+\begin{equation*}
+    \left|g(t)-h(t) \right| \leq |g(t)| + |-h(t)| \leq \|g \|_{\infty} + \|g \|_{\infty} = 2 \|g \|_{\infty}
+\end{equation*}
+by first using the triangle ineguality, and then that
+\begin{equation*}
+    |h(t)| \leq \|h\|_{\infty} = \sup_{t\in[0,1]} |h(t)| = \sup_{t\in[0+\delta, 1-\delta]} |h(t)| = \sup_{t\in[0+\delta, 1-\delta]} |g(t)| \leq \sup_{t\in[0, 1]} |g(t)| =\| g\|_{\infty}
+\end{equation*}
+with equality in the second step from the fact that $h$ is linear and goes towards zero as it approaches $0$ or $1$, and therefore attains its greatest value on the interval $[0+\delta,1-\delta]$. Now,
+\begin{align*}
+    \| g-h \|_{L^2}^2 &=  \int_0^{0+\delta} \left|g(t)-h(t) \right|^2dt + \int_{0+\delta}^{1-\delta} \left|g(t)-h(t) \right|^2dt +\int_{1-\delta}^{1} \left|g(t)-h(t) \right|^2dt\\ 
+    &\leq \int_0^{0+\delta} (2 \| g\|_\infty)^2dt + 0 +\int_{1-\delta}^{1} (2 \| g\|_\infty)^2dt\\
+    &=  4 \delta \| g\|_\infty^2 + 4 \delta \| g\|_\infty^2\\ 
+    &= \varepsilon^2
+\end{align*}
+
+% * PART 3   % construct vs. define
+Recall the unit circle $\mathbb{T}$ where each point $z \in \mathbb{T}$ is given by $z= e^{2\pi i t}$ for $t \in \mathbb{R}$, and the 1-periodicity of the values $z$.  That is, all values of $t$ that differ by an integer amount correspond to the same point $z$. Using this, we construct a function $H: \mathbb{T} \longrightarrow \mathbb{C}$ of  $z\in\mathbb{T}$ by $H(e^{2 \pi i t})=h(t)$ for $t\in[0,1]$. Since $h \in C_{\text{per}}[0,1]$ we have that $H \in C(\mathbb{T})$. That is, since $h$ is continuous and satisfies $h(0) = h(1)$, it implies that $H$ is continuous on $\mathbb{T}$.
+%\begin{lemma}
+%    The collection 
+%    \begin{equation*} 
+%        A = \operatorname{span}(\{z^n\})_{n\in \mathbb{Z}} = \left\{ \sum_{n=-N}^{N} c_nz^n : N\in\mathbb{N}, c_n \in \mathbb  {C} \right\}
+%    \end{equation*}
+%    is dense in $C(\mathbb{T})$.
+%\end{lemma}
+%by the Stone weierstrass theorem 0.
+%overgang fra $\mathbb{N}$ til $\mathbb{Z}$
+%// \begin{theorem}[Weierstrass Approximation Theorem \cite{durenInvitationClassicalAnalysis2012}]
+%//     Let $q(x)$ be continuous on the interval $[-\pi, \pi]$, with $q(-\pi)=q(\pi)$. Then for each $\varepsilon>0$ there is a trigonometric polynomial $T(x)$ such that $|q(x)-T(x)|<\varepsilon$ for $-\pi \leq x \leq \pi$.
+%// \end{theorem}
+\begin{theorem}[Weierstrass Approximation Theorem \cite{durenInvitationClassicalAnalysis2012}]
+    Let $q(x)$ be continuous on the interval $[0, 1]$, with $q(0)=q(1)$. Then for each $\varepsilon>0$ there is a trigonometric polynomial $T(x)$ such that $|q(x)-T(x)|<\varepsilon$ for $0 \leq x \leq 1$.
+\end{theorem}
+
+% Lemma 1 implies that there exist a complex polynomial 
+Now using the Weierstrass Approximation theorem with $q(x)= H(z)$ and $T(x) = P(z)$ we have that there exist a complex polynomial
+\begin{equation*}
+    P(z)= \sum_{n=-N}^{N}c_n z^n, \quad \text{where }z\in \mathbb{T},    
+\end{equation*}
+such that $| H(z)-P(z) | < \varepsilon$. Set $p(t) =P(e^{2\pi it})$ and observe that
+%\begin{equation*}
+%    \| H-P \| \leq \| H-P \|_{\infty} = \sup_{z\in \mathbb{T}} |H(z)-P(z)| < \varepsilon.
+%\end{equation*}
+% using that that $\operatorname{span}(z^n)_{n\in \mathbb{Z}}$ is dense in $C(\mathbb{T})$. Set $p(t) =P(e^{2\pi it})$ and observe that
+\begin{equation*}
+P(z)= P(e^{2\pi it})= \sum_{n=-N}^{N}c_n e^{2\pi int}, \quad \text{where }t\in [0,1],
+\end{equation*}
+gives an element of $\operatorname{span} \left( \left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}} \right)$ with $| h(t)-p(t) | < \varepsilon$.
+%\begin{equation*}
+%    \| h-p \|_{\infty} = \sup_{t\in [0,1]} |h(t)-p(t)| < \varepsilon.
+%\end{equation*}
+%However, we need to measure distance using the $L^2$-norm and not the uniform norm. 
+And in using the $L^2$-norm we have
+%\begin{align*}
+%    \| h-p \|_{L^2([0,1])}^2 =& \int_0^1 \left|h(t)-p(t) \right|^2dt, \\ 
+%    \leq &\int_0^1 \left\|h(t)-p(t) \right\|_{\infty}^2dt,\\
+%    \leq &\int_0^1 \varepsilon^2 dt,\\ 
+%    =& \varepsilon^2.
+%\end{align*}
+\begin{align*}
+    \| h-p \|_{L^2([0,1])}^2 =& \int_0^1 \left|h(t)-p(t) \right|^2dt, \\ 
+    \leq &\int_0^1 \varepsilon^2 dt,\\ 
+    =& \varepsilon^2.
+\end{align*}
+Now using the triangle inequality to combine the above estimates, we get
+\begin{align*} 
+    \| f-p\|_{L^2([0,1])} \quad \leq&\quad  \| f-g\|_{L^2([0,1])} + \| g-h\|_{L^2([0,1])} +\| h-p\|_{L^2([0,1])}\\
+    <& \quad \varepsilon + \varepsilon +\varepsilon \\
+    =& \quad 3 \varepsilon
+\end{align*}
+For this reason, we can approximate every $f\in L^2([0,1])$ by a function $p \in \operatorname{span} \left( \left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}} \right)$ as closely as we want. In other words,  $\operatorname{span} \left( \left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}} \right)$ is dense in $L^2([0,1])$, and therefore $\left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}}$ is complete. %By theorem 2 $\left\{ e_{\lambda} \right\}_{\lambda\in \mathbb{Z}}$ is an orthonormal basis for $L^2([0,1])$. 
+
+
+
+
+\end{document}

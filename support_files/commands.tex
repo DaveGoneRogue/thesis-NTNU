@@ -1,0 +1,60 @@
+
+%% Commands for the document
+%% ---------------------------------------------------------------------
+
+% Defines a new command for the horizontal lines, change thickness here
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+%\renewcommand{\arraystretch}{1.25}
+
+
+
+%% Mathematical symbol commands
+%% ---------------------------------------------------------------------
+%\newcommand{\N}{\mathbb{N}}  % Already defined
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\PP}{\mathbb{PP}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+%\newcommand{\C}{\mathbb{C}}  % Already defined
+\newcommand{\Fp}{\mathbb{F}_p}
+\newcommand{\Fq}{\mathbb{F}_q}
+
+
+\newcommand{\Tau}{\mathrm{T}}
+
+%% Z med striketrhough
+\newcommand{\Zstroke}{\text{\ooalign{\hidewidth\raisebox{0.2ex}{--}\hidewidth\cr$Z$\cr}}}
+\newcommand{\zstroke}{\text{\ooalign{\hidewidth -\kern-.3em-\hidewidth\cr$z$\cr}}}
+
+
+
+\newcommand{\degc}{$^\circ$C~}
+\renewcommand{\deg}{\ensuremath{^{\circ}}}
+\newcommand{\edegc}{^\circ \text{C}~}
+\newcommand{\minone}{$^{-1}$}
+\newcommand{\eminone}{^{-1}}
+
+
+
+%% Other Settings
+%% ---------------------------------------------------------------------
+% \masl{m.a.s.l}
+
+
+% --- Macros --- %
+% User defined macros (functions) can go here, 
+% these may be overriden for each subfile by using \renewcommand{}[][]{}
+\newcommand{\set}[1]{\{#1\}} % A macro for making a set
+
+%% normal-brackets
+\newcommand{\brac}[1]{\left(#1\right)}
+%% Square-brackets
+\newcommand{\bras}[1]{\left[#1\right]}
+%% Curly-brackets
+\newcommand{\braq}[1]{\left\{#1\right\}}
+
+
+\newcommand{\spn}[1]{\operatorname{span}\left( #1 \right)}
+\newcommand{\spnclos}[1]{\overline{\operatorname{span}}\left( #1 \right)}
+\newcommand{\mes}[1]{\operatorname{mes}\left( #1 \right)}

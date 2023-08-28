@@ -1,0 +1,239 @@
+
+
+% -----------------------------------------------------------------
+% IKKE BRUK DENNE, den er bare for historie
+% -----------------------------------------------------------------
+
+
+
+% -----------------------------------------------------------------
+% Packages for the document
+% -----------------------------------------------------------------
+\ProvidesPackage{head}  % Husk at dokumentet bare het "head" før
+\usepackage{afterpage}  % Execute command after the next page break
+
+
+% ------------------------------------------------------------------
+% Geometry & Spacing
+% ------------------------------------------------------------------
+\usepackage[bottom=3cm, top=2.5cm, left=2.1cm, right=2.1cm, bindingoffset=10mm]{geometry}  % specify geometry of the pages
+
+
+% ------------------------------------------------------------------
+% Typesetting
+% ------------------------------------------------------------------
+\usepackage{typearea}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[T1]{fontenc}  % Use fontspec and compile with lualatex instead
+\usepackage{fontspec}  % Remember to change compiler
+%\usepackage{lmodern} 	%  Font type. Medieval numbers with \oldstylenums{0123456789}
+\usepackage[]{libertine}			% Use Libertine font type
+\usepackage[libertine]{newtxmath}
+
+\usepackage{setspace}  % Set space between lines (\onehalfspacing, doublespacing)
+\usepackage{rotating}  % Allows for rotating pages/figures etc
+\usepackage{subfiles}  % Allows for subfile functionality
+
+\usepackage{enumitem}
+\usepackage{multicol}
+
+
+% ------------------------------------------------------------------
+% Pagestyles
+% ------------------------------------------------------------------
+\usepackage[automark, headsepline]{scrlayer-scrpage}
+%\usepackage{floatpag}  % Different pagestyles
+\clearpairofpagestyles
+\lehead{\footnotesize\headmark}
+\rohead{\footnotesize\headmark}
+\cfoot[\pagemark]{\pagemark}
+%\setheadsepline{1pt}
+\pagestyle{scrheadings}
+
+
+% ------------------------------------------------------------------
+% Citation, bibliography, todo and markings
+% ------------------------------------------------------------------
+% \usepackage{cite} Do not use
+\usepackage{natbib}
+% https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib
+% TL:DR kan bruke natbib fordi vi har en .bst file
+
+
+
+
+\usepackage[toc,page]{appendix}  % for making an appendix
+%\setcounter{chapter}{+1}
+%\usepackage{bibtopic} % Several bibtex files within one document
+
+%\usepackage{todonotes}
+%\usepackage{cancel}  % Strike out things with \cancel{tostrikeout}
+
+
+% ------------------------------------------------------------------
+% Floating environments
+% ------------------------------------------------------------------
+\usepackage{wrapfig}  % Floating figures
+%\usepackage{subfig}
+
+%\usepackage{float}  % Do not use this if using floatrow
+\RequirePackage{floatrow}
+%\floatsetup[figure]{style=plain}
+%\floatsetup[table]{style=plaintop}
+
+\RequirePackage{sansmath}
+% \DeclareCaptionFont{sansmath}{\sansmath}
+
+\usepackage{caption}
+\captionsetup{
+	format=plain, 	% hang, plain
+	labelformat=simple,	 % default, empty, simple, brace, parens
+	labelfont={bf,up}, 
+	labelsep=colon,	 % none, colon, period, space, quad, newline, endash
+	textformat=simple,  % empty, simple, period
+	justification=justified,  % text alignment: justified, centering, centerlast, centerfirst, raggedright, raggedleft
+	margin=5mm,
+	font={footnotesize, sf, sansmath},  % bf, it, up
+	labelfont={bf},
+	textfont={sf,sansmath},
+%	textfont=up,
+	skip=5mm,  % spacing between captions and content of the environment
+%	singlelinecheck=false  % set automatic text centering on/off 
+}
+
+\usepackage{subcaption}  % enables depiction of several images amongst each other (\subcaptionbox)
+
+\usepackage{placeins}  % Control float placement with /FloatBarrier
+
+
+% ------------------------------------------------------------------
+% Graphics, colors etc
+% ------------------------------------------------------------------
+\RequirePackage{graphicx}
+% \graphicspath{{images/}{../images/}}  % example for more folders
+\graphicspath{{./figs/}}
+\usepackage[usenames,dvipsnames]{xcolor}  % Figure colour ?
+
+
+% ------------------------------------------------------------------
+% Mathematical expressions
+% ------------------------------------------------------------------
+\let\openbox\relax
+\let\Bbbk\relax
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{mathtools}  % Fixes some amsmath quirks
+\usepackage{physics}  %  Allows for dirac notation
+\usepackage{wasysym}  % Allows for star signs and etc
+\usepackage{gensymb}  %  Allows use \degree
+%\usepackage{upgreek}  %  Upright Greek letters
+
+\numberwithin{equation}{chapter}
+\RequirePackage{nicefrac}
+%\RequirePackage{bm}  % Has troubles with defining to many symbols
+\RequirePackage{chemformula}
+
+
+% ------------------------------------------------------------------
+% SI units
+% ------------------------------------------------------------------
+%\usepackage{sistyle}  % Package to typeset SI units
+\usepackage{siunitx}
+\sisetup{ 
+	output-decimal-marker={.},
+	locale=US,
+	group-separator={,},
+	exponent-product=\cdot, 		% \times, \cdot
+	group-digits=integer,
+	retain-explicit-plus,
+	separate-uncertainty=true, 		% Appearance as () or \pm; in the code: \pm, +- or ()
+% 	tightpm,	 					% reduce space b/w value and error, alternatively:
+	uncertainty-separator={\,},
+	multi-part-units=single, 		% evtl. enclose errors; repeat, single, brackets
+	range-units=repeat,	  			% evtl. enclose ranges; repeat, single, brackets
+% 	range-phrase={{~to~}},	 		% optional; {{~to~}}, {\,--\,}
+	list-units=single,
+% 	mode=text, 						% Oldstyle numbers (load respective font -> hfoldsty)
+% 	valuemode=text,unitmode=maths, 	% Oldstyle not for power expressions
+% 	color=blue, 					% colors all SI-expressions
+	per-mode=reciprocal, 			% symbol, reciprocal, fraction, symbol-or-fraction
+	% möchte man zB reciprocal und fraction kombinieren, gibt es die Möglichkeit, hier die Darstellungsmethode für den Textmodus anzugeben und die einzelnen Math-Umgebungen zu erweitern (siehe Commands)
+	fraction-function=\dfrac, 		% ugly, nice, \dfrac
+	quotient-mode=fraction, 		% symbol, fraction
+	number-unit-separator=\text{\,},
+	number-unit-product = {\,},
+}
+
+
+
+% ------------------------------------------------------------------
+% Tabular and arrays
+% ------------------------------------------------------------------
+\usepackage{tabularx}
+\usepackage{booktabs}  % Is needed for \toprule f.e. in tables
+\usepackage{array}  % Extending the array and tabular environments
+
+
+% ------------------------------------------------------------------
+% Abstract environment
+% ------------------------------------------------------------------
+\RequirePackage{abstract}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont}
+%\renewcommand\abstractname{Abstract} 
+\renewenvironment{abstract}{
+	\par
+	\centering
+	\begin{minipage}{0.9\textwidth}
+		\textbf{\large\centering\abstractname\\[2ex]}
+	}{
+\end{minipage}\\[10ex]
+}
+
+
+% ------------------------------------------------------------------
+% Code highlighting
+% ------------------------------------------------------------------
+%\lstdefinestyle{Python}{
+%    language        = Python,
+%    frame           = lines, 
+%    basicstyle      = \footnotesize,
+%    keywordstyle    = \color{blue},
+%    stringstyle     = \color{green},
+%    commentstyle    = \color{red}\ttfamily }
+
+
+
+% ------------------------------------------------------------------
+% Hyperlinks and References
+% ------------------------------------------------------------------
+
+\usepackage[colorlinks=true,  % Toggles all references colours on or off
+    urlcolor=RoyalBlue,
+	citecolor=Green,
+	linkcolor=purple]{hyperref}
+	
+\RequirePackage[nameinlink, english]{cleveref} % muss nach hyperref eingebunden werden
+% \crefname{<type>}{<singular>}{<plural>}
+%\Crefname{equation}{Equation}{Equations}
+%\crefname{equation}{eq.}{eq.}
+
+\RequirePackage{nameref}
+%\RequirePackage{varioref}
+%\RequirePackage{fancyref}
+\usepackage{url}  % prints URLs like they should be in bibtex
+
+%\hypersetup{
+%  colorlinks=true,
+%  linkcolor=red,
+%  linkbordercolor={0 0 1} }
+
+
+\usepackage{adjustbox}
+\usepackage{multirow}  % multirows
+\usepackage{multicol}  % multicolumns
+
+\usepackage{listings}  % for kodesnippets
+
+\usepackage{rotating}  % rotere figurer
+

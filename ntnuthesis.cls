@@ -17,8 +17,13 @@
 
 %% CLASS OPTIONS
 
+% error, Xcolor må loades før pdfpages
+% https://tex.stackexchange.com/questions/124636/package-xcolor-error-undefined-colors-maroon-royal-blue-when-master-has-pdf
+\RequirePackage[usenames,dvipsnames]{xcolor}    % selecting text color
+
 % Package for some reason needed before the options
 \RequirePackage{pdfpages}                   % including pdf files
+
 
 % One or twosided paging
 \newcommand{\paging}{twoside}
@@ -29,9 +34,9 @@
 % Title Page
 \DeclareOption{titlepage}{
     \AtBeginDocument{
-        \begin{titlepage}
-            \maketitle
-        \end{titlepage}
+        %\begin{titlepage}
+        \maketitle
+        %\end{titlepage}
     }
 }
 
@@ -137,17 +142,50 @@
 
 %% CLASS FILE LOADING
 
-\LoadClass[a4paper,11pt,openright,\paging]{report}
+\LoadClass[a4paper,11pt,openright, \paging]{report}
+
+
 
 %% PACKAGE LOADING
 
 
 % --- Fonts --- %
-%\RequirePackage[utf8]{inputenc}             % for special characters in input
+% \RequirePackage[utf8]{inputenc}        % for special characters in input
 \RequirePackage{fontspec}                % modern font encoding
+
+
 %\RequirePackage[charter, cal=cmcal]{mathdesign} % main font with math support
-\setmainfont{Atkinson Hyperlegible}       % sans serif font
+%\let\circledS\undefined % here - PS
+
+%\setmainfont{Atkinson Hyperlegible}       % sans serif font
+
 %\RequirePackage[scaled=.82]{DejaVuSansMono} % monospace font (for code)
+
+% Max Font
+%\setmainfont{Linux Libertine 0}
+%\setmainfont{Linux Biolinum O}
+
+\usepackage{libertine}
+
+
+\usepackage{substitutefont}
+%\substitutefont{<encoding>}{<family>}{<new-family>}
+%\substitutefont{TS1}{LinuxBiolinumO(0)/m/n}{cmr/m/n}
+%\substitutefont{TS1}{Linux Biolinum O}{lmr}
+
+
+% FÅr se på dette senere
+%\usepackage{sectsty}
+%\let\underline\undefined % here - PS
+%\let\underbar\undefined % here - PS
+
+%\allsectionsfont{\fontfamily{biolinumOsF}} 
+%%\chapterfont{\fontfamily{Linux Libertine O}}
+%\chapterfont{\fontfamily{biolinumOsF}}
+
+
+
+
 
 % --- Layout & Graphics --- %
 \RequirePackage{geometry}                   % page layout
@@ -155,10 +193,11 @@
 \RequirePackage{etoolbox}                   % fixing list of listings spacing
 \RequirePackage{enumitem}                   % customising list appearance
 \RequirePackage{graphicx}                   % including figures
-\RequirePackage{xcolor}                     % selecting text color
 \RequirePackage{emptypage}                  % empty pages should be blank
 % \RequirePackage{microtype}
 \RequirePackage{emoji}
+
+
 
 % --- Math --- %
 \RequirePackage{amsmath}                    % advanced math typesetting
@@ -175,6 +214,8 @@
     margin=\parindent
 ]{subcaption}
 
+
+
 % --- Bibliography --- %
 \RequirePackage{babel}                      % language specifics
 \RequirePackage{csquotes}                   % recommended for biblatex
@@ -185,24 +226,59 @@
     minbibnames=3,
     maxcitenames=2,
     mincitenames=1,
-    %citestyle=numeric-comp,
+    % citestyle=numeric-comp,
     sorting=none
-    %dashed=false
+    % dashed=false
 ]{biblatex}                                 % for bibliography
 \RequirePackage{booktabs}                   % better formatting of tables
-\RequirePackage{hyperref}                   % interactive cross references
+
+
+
+% Hyperrref has \autoref, we here use \cref from cleverref
+
+% \usepackage{prettyref}    % Test ut om prettyref funker smooth
+\usepackage[colorlinks=true,  % Toggles all references colours on or off
+            urlcolor=RoyalBlue,
+            citecolor=Green,
+            linkcolor=purple]{hyperref}     % interactive cross references
+
+
 \ifcapitalize
-    \RequirePackage[capitalize,noabbrev]{cleveref}   % automatic cross references
+    \RequirePackage[capitalize, noabbrev, nameinlink]{cleveref}   % automatic cross references
 \else
     \RequirePackage[noabbrev]{cleveref}
 \fi
 \RequirePackage[acronym]{glossaries}        % create a glossary and acronym list
+
+% Original
+%\Crefname{enumi}{Item}{Items}%
+%\Crefname{enumii}{Item}{Items}%
+%\Crefname{enumiii}{Item}{Items}%
+%\Crefname{enumiv}{Item}{Items}%
+%\Crefname{enumv}{Item}{Items}%
+
+% Mine
+\Crefname{enumi}{}{}%
+\Crefname{enumii}{}{}%
+\Crefname{enumiii}{}{}%
+\Crefname{enumiv}{}{}%
+\Crefname{enumv}{}{}%
+
+\crefname{enumi}{}{}%
+\crefname{enumii}{}{}%
+\crefname{enumiii}{}{}%
+\crefname{enumiv}{}{}%
+\crefname{enumv}{}{}%
+
 
 
 % --- Tikz & Plots--- %
 \RequirePackage{pgfplots}
 \RequirePackage{tikz}
 \RequirePackage{tikz-cd}
+
+
+
 
 %% CUSTOMISATION
 
@@ -213,13 +289,19 @@
 \usetikzlibrary{graphs}
 \usetikzlibrary{arrows}
 
-% Page geometry and spacing (same for even and odd pages)
-% Page geometry and spacing (same for even and odd pages)
+
+% ------------------------------------------------------------------
+% Geometry & Spacing
+% ------------------------------------------------------------------
 \geometry{left=2.5cm, right=2.5cm, top=4cm, bottom=4.5cm}
 \frenchspacing
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
 
+
+% ------------------------------------------------------------------
+% Typesetting
+% ------------------------------------------------------------------
 % Roman page numbers from the beginning of the document
 \pagenumbering{roman}
 \setcounter{page}{3}
@@ -236,6 +318,7 @@
     \std@chapter
 }
 
+
 % Add unnumbered chapters to table of contents and headings
 \let\std@schapter\@schapter
 \def\@schapter#1{
@@ -246,6 +329,7 @@
 
 % Dotted line and tighter vertical spacing for chapters in the table of contents
 \def\l@chapter#1#2{\@dottedtocline{1}{0em}{1.5em}{\bf #1}{\bf #2}}
+
 
 % Support for included papers (for compiled PhD theses)
 \newcounter{paper}
@@ -278,6 +362,7 @@
 }
 \pagestyle{ntnuheadings}
 
+
 % Itemize and enumerate: tighter and with other symbols
 \setlist[enumerate]{itemsep=0mm, topsep=5pt, partopsep=0mm, parsep=0mm}
 \setlist[enumerate,1]{label=\arabic*., ref=\arabic*}
@@ -296,12 +381,26 @@
 \definecolor{thesisred}{rgb}{.4, .05, .15}
 \definecolor{thesisgreen}{rgb}{.2, .3, .2}
 
+
+
+%% Theorems and definitions
+%% --------------------------------------------------------------------------
+%% Notes
+%%\newtheorem{environment name}{displayed name}
+%%\newtheorem*{environment name}{displayed name} % for unnumbered theorems
+%%\newtheorem{environment name}{displayed name}[link] % the link for linking with sections, subsections, chapters etc.
+%% theorem styles
+%% plain: The default with plain heading, italicised text
+%% definition: plain heading, plain text
+%% remark: italicised heading, plain text
 %Defining theorem environments
+
+
 % --- Defining theorem env --- % 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{proposition}{Proposition}[theorem]
 \newtheorem{corollary}{Corollary}[theorem]
 
 % --- Defining definition env --- %

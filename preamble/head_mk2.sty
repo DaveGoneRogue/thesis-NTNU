@@ -1,0 +1,153 @@
+
+
+% -----------------------------------------------------------------
+% Packages for the document
+% -----------------------------------------------------------------
+\usepackage{afterpage}  % Execute command after the next page break
+
+
+% ------------------------------------------------------------------
+% Typesetting
+% ------------------------------------------------------------------
+\usepackage{typearea}
+
+\usepackage{setspace}  % Set space between lines (\onehalfspacing, doublespacing)
+\usepackage{rotating}  % Allows for rotating pages/figures etc
+\usepackage{subfiles}  % Allows for subfile functionality
+
+
+% ------------------------------------------------------------------
+% Citation, bibliography, todo and markings
+% ------------------------------------------------------------------
+\usepackage[toc,page]{appendix}  % for making an appendix
+%\setcounter{chapter}{+1}
+%\usepackage{bibtopic} % Several bibtex files within one document
+
+
+% ------------------------------------------------------------------
+% Hyperlinks and References
+% ------------------------------------------------------------------
+
+% test om denne funker
+\usepackage{url}  % prints URLs like they should be in bibtex
+
+
+% ------------------------------------------------------------------
+% Tabular and arrays
+% ------------------------------------------------------------------
+\usepackage{tabularx}
+\usepackage{booktabs}  % Is needed for \toprule f.e. in tables
+\usepackage{array}  % Extending the array and tabular environments
+
+
+% ------------------------------------------------------------------
+% Floating environments
+% ------------------------------------------------------------------
+\usepackage{wrapfig}  % Floating figures
+%\usepackage{subfig}
+
+%\usepackage{float}  % Do not use this if using floatrow
+\RequirePackage{floatrow}
+%\floatsetup[figure]{style=plain}
+%\floatsetup[table]{style=plaintop}
+
+%\RequirePackage{sansmath}
+% \DeclareCaptionFont{sansmath}{\sansmath}
+
+\usepackage{caption}
+\captionsetup{
+	format=plain, 	% hang, plain
+	labelformat=simple,	 % default, empty, simple, brace, parens
+	labelfont={bf,up}, 
+	labelsep=colon,	 % none, colon, period, space, quad, newline, endash
+	textformat=simple,  % empty, simple, period
+	justification=justified,  % text alignment: justified, centering, centerlast, centerfirst, raggedright, raggedleft
+	margin=5mm,
+	font={footnotesize, sf, sansmath},  % bf, it, up
+	labelfont={bf},
+	textfont={sf,sansmath},
+%	textfont=up,
+	skip=5mm,  % spacing between captions and content of the environment
+%	singlelinecheck=false  % set automatic text centering on/off 
+}
+
+\usepackage{subcaption}  % enables depiction of several images amongst each other (\subcaptionbox)
+
+\usepackage{placeins}  % Control float placement with /FloatBarrier
+
+
+% ------------------------------------------------------------------
+% Graphics, colors etc
+% ------------------------------------------------------------------
+% \graphicspath{{images/}{../images/}}  % example for more folders
+\graphicspath{{./figures/figure-png}}
+
+
+
+% ------------------------------------------------------------------
+% Abstract environment
+% ------------------------------------------------------------------
+%\RequirePackage{abstract}
+%\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+%\renewcommand{\abstracttextfont}{\normalfont}
+%%\renewcommand\abstractname{Abstract} 
+%\renewenvironment{abstract}{
+%	\par
+%	\centering
+%	\begin{minipage}{0.9\textwidth}
+%		\textbf{\large\centering\abstractname\\[2ex]}
+%	}{
+%   \end{minipage}\\[10ex]
+%}
+
+
+% ------------------------------------------------------------------
+% Code highlighting
+% ------------------------------------------------------------------
+%\lstdefinestyle{Python}{
+%    language        = Python,
+%    frame           = lines, 
+%    basicstyle      = \footnotesize,
+%    keywordstyle    = \color{blue},
+%    stringstyle     = \color{green},
+%    commentstyle    = \color{red}\ttfamily }
+
+
+%\RequirePackage{minted}     % Code highlighting, funket ikke://
+
+%https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+
+% \mintinline{latex}{\usepackage{minted}}  % in line code example
+
+
+
+% ------------------------------------------------------------------
+% Mathematical expressions
+% ------------------------------------------------------------------
+\let\openbox\relax
+\let\Bbbk\relax
+
+% resten av amsmath er allerede lastet inn
+%\usepackage{amsfonts}  % Bruker modern font encoding
+\usepackage{amscd}      % Commutative diagrammer
+\usepackage{mathtools}  % Fixes some amsmath quirks
+\usepackage{physics}  %  Allows for dirac notation
+\usepackage{wasysym}  % Allows for star signs and etc
+\usepackage{gensymb}  %  Allows use \degree
+%\usepackage{upgreek}  %  Upright Greek letters
+
+\numberwithin{equation}{chapter}
+\RequirePackage{nicefrac}
+%\RequirePackage{bm}  % Has troubles with defining to many symbols
+\RequirePackage{chemformula}
+
+
+% ------------------------------------------------------------------
+% DIV
+% ------------------------------------------------------------------
+\usepackage{adjustbox}
+\usepackage{multirow}  % multirows
+\usepackage{multicol}  % multicolumns
+
+\usepackage{listings}  % for kodesnippets
+
