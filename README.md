@@ -64,3 +64,4 @@ If using a recent tex distribution it should be included in the local installati
 Note that you can freely change font by using \setmainfont{#Font here} with the addition of loading the package *fontspec* and removing the code in the font loading section. Note that the font you want to load has to be both installed and visible to the compiler. When using Overleaf, this shouldn't be a problem, it may however be some problem when working locally. Googling "installing opentype font" should give you some answers, if you are on windows this [**link**](https://www.lifewire.com/installing-truetype-or-opentype-fonts-in-windows-1074134) may be of help.
 
 ---
+ 
