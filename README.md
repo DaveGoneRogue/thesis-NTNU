@@ -8,7 +8,7 @@ Another change to this template is that it uses LuaLaTeX instead of pdflatex to 
 With the additional change to LuaLaTeX, we now have support for emojis. For how to use emojis, see [**package documentation**](https://texdoc.org/serve/emoji/0).
 
 
-**Hot tip! ** In this template, there also exists a folder with some handy LaTeX files with handy stuff. Recommend printing these out the two PDFs for easy access. Note that this template without any changes will generate a a PDF with some tips. A copy of this generated PDF named `max_template_tips.pdf` exists in this folder, so you will always have access to these tips after you begin to adapt this template to your specific thesis. 
+**Hot tip!** In this template, there also exists a folder with some handy LaTeX files with handy stuff. Recommend printing these out the two PDFs for easy access. Note that this template without any changes will generate a a PDF with some tips. A copy of this generated PDF named `max_template_tips.pdf` exists in this folder, so you will always have access to these tips after you begin to adapt this template to your specific thesis. 
 
 
 ### Setting up
