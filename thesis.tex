@@ -1,76 +1,74 @@
-%\documentclass[british, titlepage, oneside]{ntnuthesis}
-\documentclass[british, oneside]{ntnuthesis}
+%* --- Options for printing (twoside) or digital (oneside) --- %
+\newif\ifPRINTING
+%\PRINTINGtrue %! Set the conditional to true
+\PRINTINGfalse %! Set the conditional to false (one must be commented out)
 
-\usepackage{import}
-\usepackage{preamble/head_mk2}  % import allows for self made .sty files
-
-% Save the document enviroment to for saving to github
-% Turn on or off by setting the state of the boolean variable
-% To save without the chapter content, update the .gitgnore file with filenames
-
-\newif\ifSaveGit
-\SaveGitfalse  % \SaveGittrue sets the state of the boolean variable \ifdothat` to true, o.w. it's false already (or use \dothatfalse explicitly)
-
-% --- Import support files --- %
-    \input{support_files/glossary.tex}  % add glossary and acronym lists before document
-    \input{support_files/commands.tex}  % same but for commands
-    
-    % Bibliography file
-    %\addbibresource{support_files/Mastergrad.bib}
-
-    \ifSaveGit
-        \addbibresource{support_files/x_lorum_biblio.bib}
-    \else
-        \addbibresource{support_files/Mastergrad.bib}
-    \fi % Outer \fi
-% ---
+\ifPRINTING
+    \documentclass[british, twoside]{ntnuthesis}  % Language options: british, american, norsk, nynorsk
+\else
+    \documentclass[british, oneside]{ntnuthesis}  % Language options: british, american, norsk, nynorsk
+\fi
 
 
+%* --- Import of additional preamble files (advanced) --- %
+\usepackage{import}  % import package allows for loading self-made .sty files
+\usepackage{preamble/head_mk2}
 
-% title if using "titlepage" option in documentclass
-%\input{support_files/title_ntnu.tex}
 
+%* --- Import support files --- %
+\input{support_files/critical_info.tex}  %! Remember to update the content here
+%\input{support_files/glossary.tex}  % add glossary and acronym lists before document. Add \printglossaries after \tableofcontents to print
+\input{support_files/commands.tex}  % add commands before document
+\addbibresource{support_files/Mastergrad.bib}  % add the Bibliography file
+
+%! Two-side option
+%! Must manually check whether the page offset appears correctly on each 'left' and 'right' page. 
+%? If the code is commented out (i.e. the offset appears on the wrong pages), then one also needs to update the headers in 'ntnuthesis.cls'
+\ifPRINTING
+    % The following code "flips" the offset for the 'left' and 'right' pages
+    \let\tmp\oddsidemargin
+    \let\oddsidemargin\evensidemargin
+    \let\evensidemargin\tmp
+    \reversemarginpar
+\fi
+
+%* —————————————  THE DOCUMENT  ————————————— %
 \begin{document}
+    %* --- Opening --- %
+    %? Remember to comment out the title page when creating the final front page required by NTNU
+    \input{support_files/titlepage_max.tex}  %! Temporary title page for your project
+    \input{chapters/00_frontmatter.tex}
 
-    % --- Preliminaries --- %
-    \input{support_files/titlepage_max.tex}  % title for max titlepage
-
-    %\setcounter{tocdepth}{2}
-    \tableofcontents
-    \printglossaries
-
-
-    % --- DOCUMENT START --- %
-    % --- NOTE: Folder structure --- %
-    % Allows compilation of each subfile, rather to compile everything at once
-    % Subfiles must have this file as option while using the documentclass subfile
-    % Loading a subfile is done with \subfile{"path-to-file"}
+    %* --- DOCUMENT START --- %
+    %? --- NOTE: Folder structure --- %
+    % 1. Allows compilation of each subfile rather than compiling everything at once each time
+    % 2. Subfiles must have this file as an option while using the "documentclass" subfile
+    % 3. Loading a subfile is done with \subfile{"path-to-file"}
+    % 4. Remember to use the template to get all the right \subfile commands in each .tex document
     % ---
-    \ifSaveGit  
-        \chapter{Lorum Intro}
-            \subfile{chapters/xx_lorum_chap_1.tex}
-            %\subfile{chapters/introduction.tex}  % NTNU info 
-    \else
-        \chapter[]{Intro?}
-            \subfile{chapters/01_introduction.tex}
+    
+    % Chapter 1
+    \chapter{Introduction}
+        \subfile{chapters/01_introduction.tex}
+    
+    % Chapter 2
+    \chapter{LaTeX Documents Hacks}
+        \subfile{chapters/02_preliminaries.tex}
+    
+    % Chapter 3
+    \chapter{TiPs}\label{chap:tiling}
+        \subfile{chapters/03_writing_tips.tex}
 
-        \chapter{The complex trigonometric system}
-            \subfile{chapters/02_cmplx_trig_system.tex}
-            \subfile{chapters/021_cmplx_trig_system.tex}
-    \fi
-
-    %\chapter{Intro?}
-    %    \subfile{chapters/01_introduction.tex}
-%
-    %\chapter{The complex trigonometric system}
-    %    \subfile{chapters/02_cmplx_trig_system.tex}
-    %    \subfile{chapters/021_cmplx_trig_system.tex}
-
-
-
+    % Bibliography
     \printbibliography
-    % Bibliography old
-    %\bibliographystyle{preamble/AGFstyle.bst}
-    %\bibliography{preamble/Mastergrad!.bib}
 
+    %! Two-side option
+    %! Must manually check whether the last page of the bibliography ends on the "left" or "right" side of the "double page".
+    %! The back cover from NTNU should be "alone" when using the "two-page" view mode in the PDF reader. 
+    \ifPRINTING
+    \newpage
+    \thispagestyle{empty}
+    \vspace*{\fill}
+    \clearpage
+    \fi
 \end{document}

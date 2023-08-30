@@ -1,0 +1,23 @@
+\documentclass[../thesis.tex]{subfiles}
+% Separate preamble for this subfile. This preamble is loaded last, so one can override various functions before \begin{document}
+
+% Better comment extension for Vscode colors these comments differently
+% Normal comment color
+% * Important information
+% ! ALERT
+% ? Question
+% TODO stuff to do
+% // This is strikethrough
+
+
+\begin{document}
+Please see the \verb|commmands.tex| file. There are not many outside of the ones used for math. The ones worth mentioning are the following:
+\begin{itemize}
+    \item {\verb|\mycomment|}  A "block comment" in the sense that it removes the text from being printed to the final file. However, the counters for figures, chapters, equations, etc. will still increase as they were in the text.
+    \item {\verb|\SigridComment|}  Named after the author's supervisor Sigrid, one simple way of placing comments in the text. Produces the following: \SigridComment{Blablablabla}
+    \item {\verb|\SigridChange|}  Named after the author's supervisor Sigrid, one simple way of highlighting changes made in the text. Produces the following: \SigridChange{Blablablabla}
+    \item {\verb|\SigridChangeTwo|}  Alternate highlight color for changes made in the text. Produces the following: \SigridChangeTwo{Blablablabla}
+\end{itemize} 
+
+\large \textbf{Add your own commands, change my commands, or delete my commands. This is your document now}
+\end{document}

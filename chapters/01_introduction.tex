@@ -1,34 +1,65 @@
 
-
 \documentclass[../thesis.tex]{subfiles}
-% Seperate preamble for this subfile. This preamble is loaded last, so it may be used to override various functions.
+% Separate preamble for this subfile. This preamble is loaded last, so one can override various functions before \begin{document}
 
-% Normal comment
-% * Important information is highlighted
+% Better comment extension for Vscode colors these comments differently
+% Normal comment color
+% * Important information
 % ! ALERT
 % ? Question
 % TODO stuff to do
-% // this is strikethrough, sh 
+% // This is strikethrough
 
 
 \begin{document}
+%* ———————————————— !! OVERVIEW !! ————————————————
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet risus nullam eget felis \emph{ipsum}. Mattis pellentesque id nibh tortor id aliquet lectus. Nisl nunc mi ipsum faucibus vitae. Amet massa vitae tortor condimentum. Consequat interdum varius sit amet mattis \textsc{ultricies} enim. Aliquam vestibulum morbi blandit cursus risus at ultrices. Adipiscing commodo elit at imperdiet. Facilisis mauris sit amet massa vitae tortor condimentum lacinia. Quis eleifend \emph{quam} adipiscing vitae proin \emph{facilisis}. Egestas erat imperdiet sed euismod. Nec feugiat nisl pretium fusce id velit ut tortor pretium. Auctor augue mauris augue neque gravida in. Donec ac odio tempor orci dapibus ultrices in iaculis. Tempor orci eu lobortis elementum nibh tellus. Nunc mi ipsum faucibus vitae aliquet nec.
+
+\begin{conjecture}[Spectral set \namecref{conj:fuglede} or Fuglede's \namecref{conj:fuglede}]\label{conj:fuglede}  
+    %! LEGGE TIL ET STED: One common goal of the prior efforts is to clarify the relations between spectra and tilings
+    Let $\Omega\subset \R^d$ be a bounded subset with positive finite measure. Then $\Omega$ is a spectral set if and only if $\Omega$ is a tile. 
+\end{conjecture}
+
+Pharetra pharetra massa massa \textsc{ultricies} mi. Sed viverra \emph{ipsum} nunc aliquet bibendum enim \emph{facilisis} gravida. Pharetra convallis posuere morbi leo urna. Consectetur adipiscing elit duis tristique sollicitudin nibh sit. Eget nulla facilisi etiam dignissim diam quis enim. Et tortor consequat id porta nibh. A lacus vestibulum sed arcu non odio. Cras semper auctor neque vitae. Dictum varius duis at consectetur lorem donec massa sapien faucibus. At risus viverra adipiscing at in \namecref{conj:fuglede}.
+
+%TODO Meaning of life is equal 42
+\begin{theorem}\label{thrm:main_result}
+    Let $\Lambda\subset \R^d$ and $\Omega=\bras{0,1}^d$ be the unit cube in $\R^d$. Then $\brac{\Omega,\Lambda}$ is a spectral pair if and only if $\brac{\Omega,\Lambda}$ is a tiling pair.
+\end{theorem}
+and 
+\begin{theorem}\label{thrm:another_result}
+  blablablabla
+  \begin{equation}\label{eq:another_result}
+    =42
+  \end{equation}
+\end{theorem}
+\begin{lemma}\label{lem:another_result}
+  blablablabla
+  \begin{equation}\label{eq:cool_equation}
+    1+1=2
+  \end{equation}
+  \begin{equation}\label{eq:four}
+    6+9 = 69
+  \end{equation}
+\end{lemma}
+
+Gravida neque convallis a cras semper. Adipiscing enim eu turpis egestas pretium. Odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Libero volutpat sed cras ornare arcu dui vivamus arcu \cref{thrm:main_result}. Aliquet nibh praesent tristique magna. Integer vitae justo eget magna fermentum iaculis eu. Faucibus purus in massa tempor nec feugiat. Aliquet nec ullamcorper sit amet. Eu non diam phasellus vestibulum lorem sed risus ultricies tristique. Elit at imperdiet dui accumsan sit amet nulla facilisi morbi. Ultrices dui sapien eget mi. In mollis nunc sed id. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Ultrices dui sapien eget mi proin sed libero enim. Enim lobortis scelerisque fermentum dui faucibus. Consequat interdum varius sit amet mattis vulputate enim. Ipsum faucibus vitae aliquet nec ullamcorper sit amet. Vitae auctor eu augue ut lectus arcu bibendum at varius \cref{thrm:main_result}. Pharetra pharetra massa massa ultricies mi. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Pharetra convallis posuere morbi leo urna. Consectetur adipiscing elit duis tristique sollicitudin nibh sit \emph{vice versa}.
+
+%* ———————————————— Text Structure Overview ————————————————
+The text is structured as follows:
+\begin{itemize}
+  \item We begin with a...
+  \item The third...
+  \item The fourth...
+  \item Finally, we conclude the thesis with a...
+\end{itemize}
 
 
-\section{Preliminaries}
-
-\begin{definition}\label{eq:inner_prod}
-    inner product % TODO 
-\end{definition}
-
-\begin{example}\label{eq:dot_prod}
-    Let $t=(t_1,\dots t_d)$ and $\lambda=(\lambda_1, \dots, \lambda_d)$ be two vectors in $\R^d$. The inner product, denoted $\langle \cdot, \cdot \rangle$, between $t$ and $\lambda$ is the following 
-    \begin{equation}
-        \langle t, \lambda \rangle = \sum_{n=1}^d t_n \lambda_n = t_1\lambda_1 + \dots + t_d\lambda_d,
-    \end{equation}
-    also known as the dot product. 
-\end{example}
-
-
-
-
+(Some final equations for use later)
+\begin{equation}\label{eq:five}
+  2+2=4
+\end{equation}
+\begin{equation}\label{eq:six}
+  m+a+x = max
+\end{equation}
 \end{document}

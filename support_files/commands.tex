@@ -1,60 +1,145 @@
 
-%% Commands for the document
-%% ---------------------------------------------------------------------
+% * Commands for the document
+% * -------------------------------------------------------------------
+% * User-defined macros (functions) can go here, 
+% * these may be overridden for each subfile by using \renewcommand{cmd}[args][default]{def} or simply \renewcommand{cmd}{def}
 
-% Defines a new command for the horizontal lines, change thickness here
+
+% * --- Layout & Graphics --- * %
+%% Defines a new command for the horizontal lines. Change thickness here
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
-%\renewcommand{\arraystretch}{1.25}
 
 
+%\renewcommand{\arraystretch}{1.25}  % For stretching tables and arrays
 
-%% Mathematical symbol commands
-%% ---------------------------------------------------------------------
-%\newcommand{\N}{\mathbb{N}}  % Already defined
+
+% * --- Crossreferencing --- * %
+%% Avoids some words when crossreferencing to an enumerated list of equations within a theorem environment
+%% Using \cref{thrm:my_theorem} \cref{eq:mt_c} will print "Theorem 2.0.2 (c)" and not "Theorem 2.0.2 Item (c)"
+%% Original settings for both \crefname{} and \Crefname collected from cleverref pacakge .sty file
+%\Crefname{enumi}{Item}{Items}%
+%\Crefname{enumii}{Item}{Items}%
+%\Crefname{enumiii}{Item}{Items}%
+%\Crefname{enumiv}{Item}{Items}%
+%\Crefname{enumv}{Item}{Items}%
+
+\Crefname{enumi}{}{}%
+\Crefname{enumii}{}{}%
+\Crefname{enumiii}{}{}%
+\Crefname{enumiv}{}{}%
+\Crefname{enumv}{}{}%
+
+\crefname{enumi}{}{}%
+\crefname{enumii}{}{}%
+\crefname{enumiii}{}{}%
+\crefname{enumiv}{}{}%
+\crefname{enumv}{}{}%
+
+
+% * --- Mathematical Symbol Commands --- * %
+%% Symbols
+\newcommand{\nsubset}{\not\subset}
+
+%% Arabic letters
+\newcommand{\N}{\mathbb{N}}  % Already defined
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\bbP}{\mathbb{P}}
-\newcommand{\PP}{\mathbb{PP}}
+%\newcommand{\bbP}{\mathbb{P}}  % as \P yields some note P % Not used
+%\newcommand{\PP}{\mathbb{PP}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
-%\newcommand{\C}{\mathbb{C}}  % Already defined
+\newcommand{\C}{\mathbb{C}}  % Already defined
+\newcommand{\F}{\mathbb{F}}  % Already defined
+
 \newcommand{\Fp}{\mathbb{F}_p}
 \newcommand{\Fq}{\mathbb{F}_q}
+%\newcommand{\indic}{\mathbb{1}}  % not used
 
-
-\newcommand{\Tau}{\mathrm{T}}
-
-%% Z med striketrhough
+%% Z with strikethrough
 \newcommand{\Zstroke}{\text{\ooalign{\hidewidth\raisebox{0.2ex}{--}\hidewidth\cr$Z$\cr}}}
 \newcommand{\zstroke}{\text{\ooalign{\hidewidth -\kern-.3em-\hidewidth\cr$z$\cr}}}
 
 
-
+%% Degrees and-such
 \newcommand{\degc}{$^\circ$C~}
 \renewcommand{\deg}{\ensuremath{^{\circ}}}
 \newcommand{\edegc}{^\circ \text{C}~}
-\newcommand{\minone}{$^{-1}$}
-\newcommand{\eminone}{^{-1}}
+\newcommand{\minone}{$^{-1}$}  % For use in textmode
+\newcommand{\eminone}{^{-1}}  % For use in mathmode
 
 
-
-%% Other Settings
-%% ---------------------------------------------------------------------
-% \masl{m.a.s.l}
-
-
-% --- Macros --- %
-% User defined macros (functions) can go here, 
-% these may be overriden for each subfile by using \renewcommand{}[][]{}
-\newcommand{\set}[1]{\{#1\}} % A macro for making a set
-
+%% Brackets
 %% normal-brackets
-\newcommand{\brac}[1]{\left(#1\right)}
+\newcommand{\brac}[1]{(#1)}
+\newcommand{\bracMed}[1]{\left(#1\right)}  % Husk at \left og \right legger på mellomrom. Ex: E (A) vs. E(A) 
 %% Square-brackets
-\newcommand{\bras}[1]{\left[#1\right]}
+\newcommand{\bras}[1]{[#1]}
+\newcommand{\brasMed}[1]{\left[#1\right]}
 %% Curly-brackets
-\newcommand{\braq}[1]{\left\{#1\right\}}
+\newcommand{\braq}[1]{\{#1\}}
+\newcommand{\braqMed}[1]{\left\{#1\right\}}
+%% Angled-brackets
+\newcommand{\braa}[1]{\langle#1\rangle}
+\newcommand{\braaMed}[1]{\left \langle #1 \right \rangle}
+%% Absolute values
+\newcommand{\bral}[1]{|#1|}
+\newcommand{\bralMed}[1]{\left|#1\right|}
+%% Normed values
+\newcommand{\bran}[1]{\|#1\|}
+\newcommand{\branMed}[1]{\left \|#1\right \|}
 
 
-\newcommand{\spn}[1]{\operatorname{span}\left( #1 \right)}
-\newcommand{\spnclos}[1]{\overline{\operatorname{span}}\left( #1 \right)}
-\newcommand{\mes}[1]{\operatorname{mes}\left( #1 \right)}
+%% Operator names  
+%% A more high-level approach is to use \DeclareMathOperator{\max}{max} to create a shortcut with brackets and operator name at once, \max -> max(.)
+\newcommand{\spn}[1]{\operatorname{span}\brac{#1}}
+\newcommand{\spnMed}[1]{\operatorname{span}\bracMed{#1}}
+\newcommand{\spnclos}[1]{\overline{\operatorname{span}}\brac{#1}}
+\newcommand{\spnclosMed}[1]{\overline{\operatorname{span}}\bracMed{#1}}
+\newcommand{\mes}[1]{\operatorname{mes}\brac{#1}}
+\newcommand{\mesMed}[1]{\operatorname{mes}\bracMed{#1}}
+
+%% Other functions
+\newcommand{\inpl}[1]{\langle \lambda, #1 \rangle}  % inner product w. lambda
+\newcommand{\Cper}{C_{\text{per}}}  % C_per for set of continuous and periodic functions
+\newcommand{\intnozero}{\Z\setminus\braq{0}}   % for the integers setminus zero
+
+%% Indicator function
+\newcommand{\indicator}[2]{\mathbbm{1}_{#1}(#2)}  % indicator 1_A (t) 
+\newcommand{\indicatorNoVar}[1]{\mathbbm{1}_{#1}}  % indicator 1_A 
+\newcommand{\indicatorFourier}[2]{\widehat{\mathbbm{1}}_{#1}(#2)}  % indicator HAT over 1_A (t) 
+\newcommand{\indicatorNoVarFourier}[1]{\widehat{\mathbbm{1}}_{#1}}  % indicator HAT over 1_A 
+
+%% Set of exponential functions
+\newcommand{\onedexp}{ \braq{e^{2\pi i \lambda t } : \lambda \in \Z} }
+\newcommand{\alldexp}{ \braq{e^{2\pi i \inpl{t}} : \lambda \in \Z^d} }
+
+%% Lambda "function." 
+\newcommand{\lambfunc}{\mathbf{L}(\lambda_1)}  % will type L(lambda_1)  consider: \mathsf{}, \mathbf{}, or L
+\newcommand{\lambfuncNoVar}{\mathbf{L}}  % no variable
+\newcommand{\lambfuncGen}[1]{\mathbf{L}(#1)}  % general, must give input
+\newcommand{\betafunc}{\bm{\beta}} 
+
+
+% * --- Text replacements (NO $ $ symbols) --- * %
+\newcommand{\Ltwonorm}{$\|\cdot\|_{L^2}$-norm}  %! Uten dollartegn, rett i teksten ->
+\newcommand{\LPnorm}{$\|\cdot\|_{L^p}$-norm}  %! HUSK, hvis det ikke er siste ord i setningen, bruk \space etter komandoen
+\newcommand{\GenNormX}{$\|\cdot\|_{X}$-norm}
+\newcommand{\GenNormH}{$\|\cdot\|_{H}$-norm}
+
+
+
+% * --- Other Settings and Useful Commands --- * %
+% \newcommand{\masl}{m.a.s.l}
+
+\newcommand{\mycomment}[1]{} %! Block comment
+\newcommand{\SigridComment}[1]{\textcolor{green}{Comment: #1}}
+\newcommand{\SigridChange}[1]{\textcolor{green}{#1}}
+\newcommand{\SigridChangeTwo}[1]{\textcolor{orange}{#1}}
+
+%% For use inside enumerate OR itemize. Write  \item \printvalues  to get the following values printed
+%% Usecase: Figuring out the spacing for such environments so that one can later better fit it to the text
+\newcommand{\printvalues}{topsep=\the\topsep; itemsep=\the\itemsep; parsep=\the\parsep; partopsep=\the\partopsep}
+
+
+%% Max Color for Tikiz Pattern library (which does not use "dvipsnames" from Xcolor:/)
+\definecolor{MaxCyan4}{rgb}{0.0, 0.611764, 0.854901}
+\definecolor{MaxOrange}{rgb}{1.0, 0.5, 0.0}

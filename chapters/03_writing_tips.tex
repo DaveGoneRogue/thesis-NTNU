@@ -1,0 +1,161 @@
+\documentclass[../thesis.tex]{subfiles}
+% Separate preamble for this subfile. This preamble is loaded last, so one can override various functions before \begin{document}
+
+% Better comment extension for Vscode colors these comments differently
+% Normal comment color
+% * Important information
+% ! ALERT
+% ? Question
+% TODO stuff to do
+% // This is strikethrough
+
+
+\begin{document}
+
+\section{General tips}
+\begin{itemize}
+    \item Try to have an overview, makes the next tip easier. 
+    \item Prioritise and have some kind of plan
+    \item If you have time to do something, have a list of "small" things that are easy to pick up and do.
+    \item If you need to sit long to get something done, it is sometimes worth doing it, other times the solution is to take a break and come back. Knowing when to do either is a skill in itself. 
+    \item Breathers — i.e. a five-minute walk \emph{outside}
+    \item Coffee breaks, preferably with a nice group of people.
+    \item Have food at school, be that crackers, chocolate, noodles, bread, toppings, oatmeal...
+    \item Exercise!
+    \item It is a marathon, not a sprint.
+    \item Have a notebook and or, post-it notes to note down important and useful things along the way.
+\end{itemize}
+
+\section{Writing tips}
+\begin{itemize}
+    \item Write a summary of articles you have read. Write ALWAYS where you have found something, the worst is spending time looking for the place something originally came from. 
+    \item Highlight PDFs for all its worth. As well as placing text boxes with notes Makes it easier to read later down the line. 
+    \item For the most used articles author did this extensively on the printed articles. Now these pages look like a mess with different colored notes in the margin, highlight colors etc.
+    \item 
+\end{itemize}
+
+\textbf{Literature search}
+\begin{itemize}
+    \item Google is always useful, as well as Google Scholar which has its own pages for many authors and the papers they have written. 
+    \item \href{https://www.litmaps.com}{Litmaps} makes a very nice graphical web of connected papers. Useful for searching forwards in time as well as backwards in time. Sometimes some sources are referenced by a lot of authors. One can often generate new "maps" from these sources again. Hot tip: have several different tabs open with different maps. If you register you can save one map, unless you pay for premium.   
+    \item \href{https://oa.mg}{Oa} Have not used it much, it seems like a capable search engine.
+    \item \href{https://mathscinet.ams.org/mathscinet/publications-search}{Mathscinet} Is a great place for searching for maths papers, many of which have user-generated summaries of high quality.
+    \item \href{https://www.jstor.org}{jstor} has almost all kinds of journals. NTNU provides access. 
+    \item Researchgate, Arxiv, Springer, and similar pages have many articles, usually these can be found via Google or other search engines.
+    \item There exists probably a YouTube video with some updated hacks here. 
+\end{itemize}
+
+
+\textbf{Bibliography Manager}\\
+Make your life easier, get a bibliography manager. The author used Zotero (\href{https://www.zotero.org}{link}), but there are a few others. Also, download the extension Better BibTex (\href{https://retorque.re/zotero-better-bibtex/}{Link}) which will among a few other things make sure your citation keys stay unique. Now you can create a library inside 'My library for your thesis named 'Mastergrad' (if labeling it something else you must update the \verb|thesis.tex| with your name of this folder), maybe some subfolders for books, articles, etc. Use the magic wand to automatically populate your bibliography. Note that it will sometimes get articles that do not match the ones you have found (there might exist different versions out there), so make sure that the contents (especially the link to the paper) lead to the same one you use. Sometimes you must create manual entries, such as for artwork, images not created yourselves, webpages, etc. When exporting do the following three steps. It will remember the location of where you saved last time and will use the standard name 'Mastergrad' for the file if you labeled the folder as such. 
+
+\input{figures/figure-tex/zotero_tips.tex}
+
+
+\textbf{Thesaurus}\\
+Are you on a Mac? It has one of the best dictionaries and thesaurus for the English language — and it is built-in! Search for the program named "Dictionary" and choose your preferred languages in the app's preferences.  
+
+
+\textbf{Write grammar free and correctly}\\
+In addition to finding synonyms via the thesaurus above, chatgpt was used to find alternate words (also if needed, doublechecking its meaning via other sources). The author does not recommend chatgpt for writing content or solving problems it is much better (although not perfect) at rewriting your content, although sometimes the result is terrible. Also note, a paragraph might initially look good, but a read over a week later might result in you finding it made no sense at all. You will however rewrite parts of your thesis many times, and this is (usually) a \emph{good} thing <3
+The most useful program for writing was Grammarly. chatgpt knows no grammar, and makes many many many grammar errors when writing. Grammarly is the bread and butter of spellchecking your thesis. An added benefit of Grammarly is that it can be integrated into many \LaTeX editors, including the one the author used (Vscode). If you need to buy it to get the extended functionality, it is well worth its steep price. 
+
+
+\textbf{!Backup your document!}\\
+If writing locally, plz make a backup!!! I kept two of my \LaTeX code; Paying a premium to Apple to back up my \emph{entire} desktop, documents, etc. to the cloud, and also synchronizing my one folder with the thesis itself to GitHub, a feature that is neatly integrated into Vscode, and easy to use.
+GitHub, in addition to providing peace of mind, has a nice interface for viewing the history of all the changes to your document (that is only the changes you have pushed/saved to git, not the changes your editor itself keeps a history of (which is usually reset every time you close/open your document)). If you work with sensitive information or do not want your thesis public, the repository (name of the "folder" you have stored the theis) can be set to private.
+
+
+\subsection{Tips on debugging \LaTeX}
+\begin{itemize}
+    \item Ask "chatgpt" with your problem/code/error message. This can often be helpful to understand WHAT has gone wrong. It may provide solutions that will not work. It might however be a good starting point for further search.
+    \item Search the web
+    \item Read the documentation for the package you are using on CTAN \url{https://www.ctan.org}
+    \item Search the wiki (usually better than Wikipedia itself) \url{https://en.wikibooks.org/wiki/LaTeX}
+    \item Ask a friend
+\end{itemize}
+If something is difficult to solve and is not directly related to the actual content of your thesis, consider making a note of what you have found out $+$ what do to next to try and solve it, and then move on to more pressing matters. 
+
+
+\subsection{Tips for creating specific things in \LaTeX}
+\textbf{For generating tables:}\\
+\url{https://tablesgenerator.com}
+
+
+\textbf{Genious for testing LaTeX code:}\\
+\url{https://www.latex4technics.com}\\
+Note that in the settings tab, one can change from compiling only equations to full \LaTeX. This can be useful for quickly testing figure code or other things in which you need a very very short compile time to test changes quickly. 
+Important! If the page is refreshed, you lose all you have written. 
+
+
+\textbf{Figures for biology, medicine, etc.}\\
+\url{https://www.biorender.com}\\
+Wish we had this for maths sometimes!
+
+
+\textbf{Tikiz and some thoughts on drawings}\\
+When creating drawings in \LaTeX, I would recommend doing so using the powerful internal package 'tikz'. It can sometimes be hard to use, but here is a few tips to get you started. First, a good source for some basic knowledge is \url{https://www.overleaf.com/learn/latex/TikZ_package}, or \url{https://tikz.dev} for more detailed information on specific parts of Tikiz and the different libraries one can use. The latter also provides some tutorials as well as providing a great overview of what it can be used to draw. The author also used chatgpt to generate some initial code, or to ask questions on "how to do this and that", but it cannot get you all the way. To test tikiz code the author used the webpage above 'latex4technics'. Functional, readable, and "good" figures are important. It is not recommended to do not push these "time thieves" to the final weeks. In addition to making your thesis better, it is also rewarding to complete a cool \LaTeX figure, and it was also the only thing my family partly understood of the thesis. A final mention is of this page which has tutorials for many types of figures and drawings \url{https://latexdraw.com}.
+
+If one does not want to learn Tikiz, one can always play around with \href{https://www.mathcha.io/editor/vwPs1KFnvu2vIy2#}{matcha.io}, but it might not give you what you want, or the result is to simple of a drawing/figure. 
+
+
+\subsection{Math specific pages}
+
+\textbf{A simple and useful dictionary}\\
+\url{https://matematikkradet.no/ordliste/}
+
+\textbf{For drawing simple arrow diagrams}\\
+\url{https://tikzcd.yichuanshen.de}
+
+\textbf{The superior and more powerful diagram editor}\\
+\url{https://q.uiver.app}
+
+\textbf{Writing advice from Tao}\\
+\url{https://terrytao.wordpress.com/advice-on-writing-papers/}
+
+
+
+%* —————————————— NEW SECTION 
+\section{Examples from my thesis}
+Before and after for some figures
+\begin{figure}[h!]%h!
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=0.9\linewidth]{cper_dense_c.png}
+    \end{subfigure}\quad
+    \begin{subfigure}{.45\textwidth}
+        %\includegraphics[width=0.9\linewidth]{x_zotero_2.png}
+        \input{figures/figure-tex/cper_dense_c.tex}
+    \end{subfigure}
+\end{figure}
+
+
+\begin{figure}[h!]%h!
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=0.9\linewidth]{spec_no_shift.jpg}
+    \end{subfigure}\quad
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=0.9\linewidth]{spec_single_shift.jpg}
+    \end{subfigure}\\
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=0.9\linewidth]{multiple_shift_left_zero.jpg}
+    \end{subfigure}\quad
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=0.9\linewidth]{multiple_shift_left_zero_horizontal.jpg}
+    \end{subfigure}
+\end{figure}
+
+\input{figures/figure-tex/spectra_figures.tex}
+
+\clearpage
+The author's thesis structure. No need to copy this "organized mess". Note the pinned \verb|thesis.tex| and \verb|commands.tex|, and also the happy pets down below. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{one_ex.png}
+\end{figure}
+
+
+\end{document}
+
+

@@ -1,0 +1,40 @@
+
+%* Author
+\author{Hauge, Max}
+\shortauthor{MH}
+
+
+%* Supervisor(s)
+\newif\ifSINGLESUPERVISOR
+%\SINGLESUPERVISORtrue  %! Set the conditional to true
+\SINGLESUPERVISORfalse  %! Set the conditional to false
+
+\ifSINGLESUPERVISOR
+    \newcommand{\supervisorGrammar}{Supervisor}
+    \newcommand{\supervisor_A}{Grepstad, Sigrid}
+\else
+    \newcommand{\supervisorGrammar}{Supervisors}
+    \newcommand{\supervisorA}{Grepstad, Sigrid}
+    \newcommand{\supervisorB}{Heap, Winston}  % For more supervisors add a new line here and update the temporary title-page 'titlepage_max.tex' file
+\fi
+
+
+%* Title
+\title{Plaser Din Fancy Lange Tittel Her}
+\shorttitle{Master's thesis}
+
+
+%* Course name / Emnekode
+\newcommand{\emnekode}{MA3911 — masteroppgave i matematiske fag}
+
+
+%* Institutt
+%? The command is the same no matter the language: bokmål, nynorsk, british, american
+%? If changing between languages many times either update the "ntnuthesis.cls" file directly and comment out the code here
+%? Or simply comment in/out the used/unused commands manually here each time you change the language
+\renewcommand{\NTNUinstitutt}{Institute of Mathematical Sciences}
+\renewcommand{\NTNUinstituttLowerC}{institute of mathematical sciences}
+
+
+%* Date
+\date{\today}

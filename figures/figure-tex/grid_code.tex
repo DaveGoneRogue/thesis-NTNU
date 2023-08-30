@@ -1,0 +1,35 @@
+
+
+\ifnum\z=1
+    % Axis lines
+    %\draw[->] (-1.5,0) -- (4.5,0) node[right] {$\lambfuncGen{\lambda_2}$};
+    %\draw[->] (0,-1.5) -- (0,3.5) node[above] {$\Lambda_2$};
+    \draw[->] (-1.5,0) -- (4.5,0) node[right] {$Y$};
+    \draw[->] (0,-1.5) -- (0,3.5) node[above] {$X$};
+
+    % Dashed lines at each integer in the x direction
+    \foreach \x in {-1,...,4}
+        \draw[dashed] (\x,-1.5) -- (\x,3.5);
+
+    % Dashed lines at each integer in the y direction
+    \foreach \y in {-1,...,3}
+        \draw[dashed] (-1.5,\y) -- (4.5,\y);
+\else
+    % Axis lines
+    %\draw[->] (-1.5,0) -- (4.5,0) node[right] {$\Lambda_1$};
+    %\draw[->] (0,-1.5) -- (0,3.5) node[above] {$\lambfunc$};
+    \draw[->] (-1.5,0) -- (4.5,0) node[right] {$X$};
+    \draw[->] (0,-1.5) -- (0,3.5) node[above] {$Y$};
+
+    % Dashed lines at each integer in the x direction
+    \foreach \x in {-1,...,4}
+        \draw[dashed] (\x,-1.5) -- (\x,3.5);
+
+    % Dashed lines at each integer in the y direction
+    \foreach \y in {-1,...,3}
+        \draw[dashed] (-1.5,\y) -- (4.5,\y);
+\fi
+
+% Lambda symbol in upper right corner
+\node[cyan] at (4.5,3.5) {\Large $\Lambda$}; 
+%\draw[orange] (4,3) node[above right] {$\Lambda$};

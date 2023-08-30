@@ -1,0 +1,22 @@
+
+% Adjust margins if needed
+\ifPRINTING
+    \newgeometry{top=0.5in, bottom=0.5in, left=1in, right=1in, bindingoffset=6mm}
+\else
+    \newgeometry{top=0.5in, bottom=0.5in, left=1in, right=1in}
+\fi
+
+
+\thispagestyle{empty} % Remove page number
+
+
+\vspace*{\fill}
+\begin{center}
+    \textit{\enquote{A famous person once said...}}\\
+\end{center}
+\begin{flushright}
+    \textbf{— Max in writing this document}
+\end{flushright}
+\vspace*{\fill}
+
+\restoregeometry % Restore original page margins

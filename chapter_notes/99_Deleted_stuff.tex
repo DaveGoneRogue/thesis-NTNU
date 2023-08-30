@@ -1,0 +1,71 @@
+% Better comment extension for Vscode colors these comments differently
+% Normal comment color
+% * Important information
+% ! ALERT
+% ? Question
+% TODO stuff to do
+% // This is strikethrough
+
+
+
+MY NOTEPAD, this is not imported anywhere
+
+%* Attempting to prove Keller's theorem using my tiling definition
+%* Max tiling attempts:
+\SigridComment{Must now argue that all elements in this set still equal one almost everywhere. }\\
+maybe some argument on the fact that 
+\begin{align*}
+    \sum_{\gamma \in \Lambda} \indicator{I^d}{(x+\alpha) - \gamma} = 1 a.e 
+\end{align*}
+i.e considering all shifted $x$'s, and then defining $y=x+\alpha$, to yield $\sum_{\gamma \in \Lambda} \indicator{I^d}{y - \gamma} = 1$ a.e. $y\in \R^d$ or some $y\in \R^d\setminus \braqMed{something}$. 
+
+Or maybe some argument that lets us consider points $x-\alpha$, which would yield
+\begin{align*}
+    \sum_{\gamma \in \Lambda} \indicator{I^d}{(x-\alpha) - \gamma + \alpha} = \sum_{\gamma \in \Lambda} \indicator{I^d}{x - \gamma}
+\end{align*}
+which we know is equal to $1$ almost everywhere since $\Lambda$ is a tiling set. 
+%* Interlude
+%* Max tiling attempt 1
+To show that $\mathbf{S}$ is a tiling set, we must show that
+\begin{equation*}
+    \sum_{\gamma \in \Lambda} \indicator{I^d}{x-s(\gamma)} = 1, \quad a.e. \text{\space\space} x \in \R^d.
+\end{equation*}
+Since $\Lambda$ is a tiling set, we already know that
+\begin{equation*}
+    \sum_{\gamma \in \Lambda} \indicator{I^d}{x-\gamma} = 1, \quad a.e. \text{\space\space} x \in \R^d.
+\end{equation*}
+For some $\gamma\in \Lambda$ we know that either $\gamma_1-\lambda_1 \in \Z$ or $\gamma_1-\lambda_1 \not\in \Z$. In the latter case, observe that since
+$\indicator{I^d}{x-\gamma} = 1$ then this implies that $\indicator{I^d}{x-s(\gamma)} = 1$ since $s(\gamma) = \gamma$. In the first case, the argument is not as straightforward. Observe that we have
+\begin{align*}
+    \indicator{I^d}{x-s(\gamma)} &= \indicator{I^d}{x- (\gamma-\alpha)}\\
+    &= \indicator{I^d}{x- (\gamma_1-\alpha_1,\gamma_2,\dots,\gamma_d)}\\
+    &= \indicator{I^d}{x_1-\gamma_1+\alpha_1,x_2- \gamma_2,\dots,x_d-\gamma_d}\\
+\end{align*}
+%* Interlude
+%* Max tiling attempt 2
+To show that $\mathbf{S}$ is a tiling set, we must show that
+\begin{equation*}
+    \sum_{\gamma \in \mathbf{S}} \indicator{I^d}{x-\gamma} = 1, \quad a.e. \text{\space\space} x \in \R^d.
+\end{equation*}
+Since $\Lambda$ is a tiling set, we already know that
+\begin{equation*}
+    \sum_{\gamma \in \Lambda} \indicator{I^d}{x-\gamma} = 1, \quad a.e. \text{\space\space} x \in \R^d.
+\end{equation*}
+Consider two subsets $A, B \subset S$ defined such that 
+\begin{align*}
+    S\setminus A =& \braqMed{s(\gamma) = \gamma : \gamma \in \Lambda}\\
+    S\setminus B =& \braqMed{s(\gamma) = \gamma - \alpha : \gamma \in \Lambda}
+\end{align*}
+\begin{align*}
+    \sum_{\gamma \in \mathbf{S}} \indicator{I^d}{x-\gamma} = \sum_{\gamma \in S\setminus A} \indicator{I^d}{x-\gamma} +\sum_{\gamma \in S\setminus B} \indicator{I^d}{x-\gamma}
+\end{align*}
+Since $s(\gamma) = \gamma$ for all elements in $S\setminus A$, the first sum equals $1$ almost everywhere. For the second sum, we have
+\begin{align*}
+    \sum_{\gamma \in S\setminus B} \indicator{I^d}{x-\gamma} = \sum_{\gamma \in \Lambda} \indicator{I^d}{x-\gamma + \alpha}
+\end{align*}
+
+% maybe this can come in handy
+\begin{equation*}
+    x\in I^d + \gamma - \alpha \Longleftrightarrow x-\alpha \in I^d + \gamma,  \quad \forall x\in something
+\end{equation*}
+%* ———————

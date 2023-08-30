@@ -2,21 +2,11 @@
 % --------------------------------------------------------------------------
 
 \begin{titlepage}
-	% Title
-	\title{Plaser din fancy lange tittel her}
-	\shorttitle{Masteroppgave}
-	% Author
-	\author{Hauge, Max}
-	\shortauthor{MH}
-	% Date
-	\date{\today}
-
 	\makeatletter
 	\let\thetitle\@title
 	\let\theauthor\@author
 	\let\thedate\@date
 	\makeatother
-
 
 	\centering
     \vspace*{0.5 cm}
@@ -24,39 +14,45 @@
     \includegraphics[width=0.7\textwidth]{ntnu.png}\\[1.0 cm]
     
 	% University Name
-    \textsc{\LARGE norwegian university of science and technology}\\[1.0 cm]
-    %\text{\LARGE norwegian university of science and technology}\\[1.0 cm]
+	\textsc{\LARGE \textsf{\NTNULowerC}}\\[1.0 cm]  %* sans serif no caps
+	%\textsc{\LARGE \textsf{\NTNU}}\\[1.0 cm]  %* sans serif caps
+    %\textsc{\LARGE \NTNU}\\[1.0 cm]  %* RM caps
     
 	% Institute
-    \textsc{\Large institute of mathematical sciences}\\[0.5 cm]
-    %\text{\Large institute of mathematical sciences}\\[0.5 cm]
+	\textsc{\Large \textsf{\NTNUinstituttLowerC}}\\[0.5 cm]  %* sans serif no caps
+    %\textsc{\Large \NTNUinstitutt}\\[0.5 cm]  %* RM caps
 	
 	% Course Name
-	\textsc{\large XXX 4242 MinEmnekode}\\[0.5 cm]
-    %\text{\large XXX 4242 MinEmnekode}\\[0.5 cm]
+	\textsc{\large \textsf{\emnekode}}\\[0.5 cm]  %* sans serif no caps
+	%\textsc{\large \emnekode}\\[0.5 cm]  %* RM caps
 	
 	%------------
 	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
-	{ \LARGE \textbf{\uppercase{\thetitle}}}\\
-	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+	{ \LARGE \textbf{\textsf{\uppercase{\thetitle}}}}\\
+	\rule{\linewidth}{0.2 mm} \\[1.0 cm]%[1.5 cm]
 	
+	\input{figures/figure-tex/aper_BIG.tex}
+
 	% Page setup
-	%\begin{minipage}{0.4\textwidth}
-	%	\begin{flushleft} \large
-	%		%\emph{Author:}\\
-	%		%\theauthor
-	%		\end{flushleft}
-	%		\end{minipage}~
-	%		\begin{minipage}{0.4\textwidth}
-	%		\begin{flushright} \large
-	%		%\emph{Supervisor:} \\
-	%		%Ortega Esparza, Eduardo %<insert here and remove %>\\  % Supervisor #1
-	%		%<insert here and remove %>\\  % Supervisor #2
-	%	\end{flushright}
-	%\end{minipage}\\[2 cm]
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{Author:}\\
+			\textrm{\theauthor}
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright} \large
+			\emph{\supervisorGrammar:} \\
+			\textrm{\supervisorA}\\  % Supervisor #1
+			\textrm{\supervisorB} %\\  % Supervisor #2
+			%\textrm{ } %\\  % Supervisor #3
+		\end{flushright}
+	\end{minipage}\\[1.5 cm]
 	
-	{\large \thedate}\\[2 cm]
+
+	{\large \thedate}%\\[2 cm]
  
-	\vfill
-	
+	%\vfill
+
 \end{titlepage}
+

@@ -1,0 +1,215 @@
+\documentclass[../thesis.tex]{subfiles}
+% Separate preamble for this subfile. This preamble is loaded last, so one can override various functions before \begin{document}
+
+% Better comment extension for Vscode colors these comments differently
+% Normal comment color
+% * Important information
+% ! ALERT
+% ? Question
+% TODO stuff to do
+% // This is strikethrough
+
+
+\begin{document}
+
+The following collection of commands are shortcuts for the normal set notation for natural numbers, integers, rationals, real numbers, etc. Feel free to add more if needed.
+\begin{itemize}
+    \item {$\N$} — \verb|\N|
+    \item {$\Z$} — \verb|\Z|
+    \item {$\Q$} — \verb|\Q|
+    \item {$\R$} — \verb|\R|
+    \item {$\C$} — \verb|\C|
+    \item {$\F$} — \verb|\F|
+    \item {$\Fp$} — \verb|\Fp|
+    \item {$\Fq$} — \verb|\Fq|
+\end{itemize}
+
+The following collection of commands has been created for creating math brackets. They come in two variants; one in which the brackets do not automatically size to the contents inside (mainly for use in text), and the other automatically size to the contents inside. The difference is simply that the latter has the suffix 'Med' in the commands. Feel free to edit/add more if needed.
+\begin{itemize}
+    \item{$\brac{A^2}$} — Normal brackets — \verb|\brac{A^2}|
+    \item{$\bracMed{A^2}$} — Normal brackets auto-sized — \verb|\bracMed{A^2}|
+    \item{$\bras{A^2}$} — Square brackets — \verb|\bras{A^2}|
+    \item{$\brasMed{A^2}$} — Square brackets auto-sized — \verb|\brasMed{A^2}|
+    \item{$\braq{A^2}$} — "Qurly" brackets — \verb|\braq{A^2}|
+    \item{$\braqMed{A^2}$} — "Qurly" brackets auto-sized — \verb|\braqMed{A^2}|
+    \item{$\braa{A^2}$} — Angeled brackets — \verb|\braa{A^2}|
+    \item{$\braaMed{A^2}$} — Angeled brackets auto-sized — \verb|\braaMed{A^2}|
+    \item{$\bral{A^2}$} — "Length" brackets — \verb|\bral{A^2}|
+    \item{$\bralMed{A^2}$} — "Length" brackets auto-sized — \verb|\bralMed{A^2}|
+    \item{$\bran{A^2}$} — Norm brackets — \verb|\bran{A^2}|
+    \item{$\branMed{A^2}$} — Norm brackets auto-sized — \verb|\branMed{A^2}|
+\end{itemize}
+
+The following collection of commands has been created for creating common functions. Feel free to edit/add more if needed.
+\begin{itemize}
+    \item{$\nsubset$} — Not a (proper) subset — \verb|\nsubset|
+    \item{$\Cper$} — Set of continuous periodic functions — \verb|\Cper|
+    \item{$\intnozero$} — Integers without zero — \verb|\intnozero|
+    \item{$\indicator{A}{x}$} — Indicator function — \verb|\indicator{A}{x}|
+    \item{$\indicatorNoVar{A}$} — Indicator function without variable $x$ — \verb|\indicatorNoVar{A}|
+    \item{$\spn{}$} — The (finite linear) span — \verb|\spn{}|
+    \item{$\spnMed{}$} — The (finite linear) span auto-sized brackets — \verb|\spnMed{}|
+    \item {$\spnclos{}$} — The closed span — \verb|\spnclos{}|
+    \item {$\spnclosMed{}$} — The closed span auto-sized brackets — \verb|\spnclosMed{}|
+    \item {$\mes{}$} — Measure of a set — \verb|\mes{}|
+    \item {$\mesMed{}$} — Measure of a set auto-sized brackets — \verb|\mesMed{}|
+\end{itemize}
+
+ 
+\subsubsection{Math enviroments}
+The following math environments have currently been created in addition to the standard 'equation' and 'align' environments. Feel free to edit/add more if needed.
+\begin{itemize}
+    \item Theorem
+    \item Lemma
+    \item Proposition
+    \item Corollary
+    \item Conjecture
+    \item Definition — where the environment closes with a $\diamondsuit$
+    \item Remark
+    \item Construction
+    \item Observation
+    \item Example — where the environment closes with a $\diamondsuit$
+    \item Proof — where the environment closes with a $\square$
+\end{itemize}
+Changing the style of the environments can be done in the \verb|ntnuthesis.cls| file. Details on how to do this are in the comments there. Furthermore, it is also somewhat intuitive where to put in a new symbol if one wishes to change the already set up $\diamondsuit$ and $\square$. Note that you might need to be in math mode for these symbols to appear correctly. The same goes for expanding the number of environments to have a closing symbol. Simply copy the already written code and change the environment name. Note that you can create very custom environments for your field, it does not need to be related to maths. One can also fit these environments into colored boxes (\href{https://tex.stackexchange.com/questions/94912/numbering-a-new-theorem}{link to tex.stackexchange}).
+
+HOT TIP: If the closing symbol appears in a weird spot or you want to force it to a specific spot, you can use the \verb|\qedhere| command within the environment. 
+
+
+\textbf{A note on the proof environment.}
+
+If the proof appears straight after a theorem (or lemma, or etc.) one can simply use 
+\begin{verbatim}
+    \begin{proof}
+        Here is my very short proof
+    \end{proof}
+\end{verbatim}
+\begin{proof}
+    Here is my very short proof
+\end{proof}
+However, if there is text, a note, or anything in between the theorem (or lemma, or etc.), then the following is used, which also hyperlinks to the result you're proving. 
+\begin{verbatim}
+    \begin{proof}[Proof of \cref{thrm:keller_tiling}]
+    Here is my very short proof
+    \end{proof}
+\end{verbatim}
+\begin{proof}[Proof of \cref{thrm:keller_tiling}]
+    Here is my very short proof
+\end{proof}
+
+
+\textbf{Rep enviroments}
+
+A very handy implementation (it is not a package you can load) is code that allows for repeating/recalling a previously stated environment. We dub this the 'rep environment'. To use 'rep environment one must use the following command with double curly brackets: 
+\begin{verbatim}
+    \begin{repEnviromenttype}{TheLabel}
+        MyText, i.e copy/paste the identical content of 
+        the environment you want to repeat
+    \end{repEnviromenttype}
+\end{verbatim}
+This can be edited in 'ntnuthesis.cls' file. Example in use 
+\begin{verbatim}
+    \begin{reptheorem}{thrm:MyTheoremLabel}
+        TheContents of the thrm 
+    \end{reptheorem}
+\end{verbatim}
+or
+\begin{verbatim}
+    \begin{replemma}{lem:MyLemmaLabel}
+        The Contents of the lemma
+    \end{replemma}
+\end{verbatim}
+
+Example of repeating an actual theorem
+\begin{verbatim}
+    \begin{reptheorem}{thrm:main_result}
+        Let $\Lambda\subset \R^d$ and $\Omega=\bras{0,1}^d$ be the unit 
+        cube in $\R^d$. Then $\brac{\Omega,\Lambda}$ is a spectral pair 
+        if and only if $\brac{\Omega,\Lambda}$ is a tiling pair.
+    \end{reptheorem}
+\end{verbatim}
+\begin{reptheorem}{thrm:main_result}
+    Let $\Lambda\subset \R^d$ and $\Omega=\bras{0,1}^d$ be the unit cube in $\R^d$. Then $\brac{\Omega,\Lambda}$ is a spectral pair if and only if $\brac{\Omega,\Lambda}$ is a tiling pair.
+\end{reptheorem}
+
+All previously created environments support 'rep environments, if you add more environments, make sure to update this code as well if it is needed. 
+
+
+\subsubsection{Tips on equation and align math modes}
+
+If one wants to continue an aligned environment with a text or content break in between, this can be done with the following
+\begin{verbatim}
+    \begin{align*}
+        42 &= 4+2\\
+        \intertext{Your text in here, which also supports math mode $2+2=4$}
+        &= 1234567890
+    \end{align*}
+\end{verbatim}
+
+Example in use:
+\begin{align*}
+    \braa{e_\lambda,e_{\lambda'}}_{L^2\brac{\Omega_1 \times \Omega_2}} 
+    &= \int_{\Omega_1} \int_{\Omega_2} e_{\lambda}(t) \overline{e_{\lambda'}(t)} dt_2 dt_1\\
+    &= \int_{\Omega_2} e^{2\pi i  \brac{\lambda_2- \lambda_2'}t_2} \bracMed{\int_{\Omega_1}  e^{2\pi i \brac{\lambda_1 - \lambda_1'}t_2} dt_1} dt_2.\\
+    \intertext{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet risus nullam eget felis \emph{ipsum}.}
+    &= \mes{\Omega_1} \int_{\Omega_2} e^{2\pi i  \brac{\lambda_2- \lambda_2'}t_2} dt_2.\\
+    \intertext{Lorem ipsum dolor sit amet, $\lambda_2 \neq \lambda_2'$ consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet risus nullam eget $\lambda_2 = \lambda_2'$ felis \emph{ipsum}.}
+    &= \mes{\Omega_1}\mes{\Omega_2} \neq 0.
+\end{align*}
+
+Last, note that both the \verb|equation| and \verb|align| environments are sensitive to newlines after the environment ends. This means if you write the following in your \LaTeX editor of choice, the output will not be the same. The numbers on the left refer to some arbitrary section of line numbers found in \LaTeX editors. 
+\begin{multicols}{2}
+    \begin{verbatim}
+        12  \begin{equation*}
+        13      1+1 = 2 
+        14  \end{equation*}
+        15  Text following eq
+        16   
+    \end{verbatim}
+    \columnbreak
+    \begin{verbatim}
+        12  \begin{equation*}
+        13      1+1 = 2 
+        14  \end{equation*}
+        15   
+        16  Text following eq
+    \end{verbatim}
+\end{multicols}
+When skipping a line number in the editor this usually causes a text break with the following text on a new line. In the case to the left, the output will be closer to the equation than in the case to the right. Note that this is not the case for any other math environments such as theorems, lemmas, etc (might also be the case for figures, etc., as well). Meaning that both of the following will give the same output (nice for space and air in the code). 
+\begin{multicols}{2}
+    \begin{verbatim}
+        12  \begin{theorem}
+        13      Contents
+        14  \end{theorem}
+        15  TextTexText
+        16
+        17
+    \end{verbatim}
+    \columnbreak
+    \begin{verbatim}
+        12  \begin{theorem}
+        13      Contents
+        14  \end{theorem}
+        15  
+        ...  
+        23  TextTexText
+    \end{verbatim}
+\end{multicols}
+
+
+\subsubsection{A few in-text commands}
+Here are a few commands for writing the norm in line with the text. Remember to add a space via the \verb|\space| command after the command itself if it is not the last word in the sentence. Illustration of a space in code vs. a space via \space command as well as norm closing the sentence: 
+
+\verb|Texttex \Ltwonorm texttextex \Ltwonorm\space texttextex \Ltwonorm.|
+
+TextTex \Ltwonorm TextTexTex \Ltwonorm\space TextTexTex \Ltwonorm.
+
+The collection of the currently created in-text commands. Feel free to edit/add more if needed. 
+\begin{itemize}
+    \item \Ltwonorm
+    \item \LPnorm
+    \item \GenNormX
+    \item \GenNormH
+\end{itemize}
+
+\end{document}

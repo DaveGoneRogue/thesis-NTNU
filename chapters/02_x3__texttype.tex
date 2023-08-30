@@ -1,0 +1,69 @@
+\documentclass[../thesis.tex]{subfiles}
+% Separate preamble for this subfile. This preamble is loaded last, so one can override various functions before \begin{document}
+
+% Better comment extension for Vscode colors these comments differently
+% Normal comment color
+% * Important information
+% ! ALERT
+% ? Question
+% TODO stuff to do
+% // This is strikethrough
+
+
+\begin{document}
+
+A few different text samples. Note that the Libertine font does not support all of \LaTeX's different font types.  
+\begin{itemize}
+    \item {\textrm{A text sample for you}} — Roman using \verb|\textrm{.}|
+    \item {\textsf{A text sample for you}} — Sans Serif using \verb|\textsf{.}|
+    \item {\textit{A text sample for you}} — Italic using \verb|\textit{.}| or \verb|\emph{.}|
+    \item {\textsf{\textit{A text sample for you}}} — Sans Serif Italic using \verb|\textsf{\textit{.}}| or using 'emph'
+    \item {\textbf{A text sample for you}} — Bold Face using \verb|\textbf{.}|
+    \item {\textsf{\textbf{A text sample for you}}} — Sans Serif Bold Face using \verb|\textsf{\textbf{.}}|
+    \item {\textsc{A text sample for you}} — Sall Caps using \verb|\textsc{.}|
+    \item {\textsf{\textsc{A text sample for you}}} — Sans Serif Small Caps using \verb|\textsf{\textsc{.}}|
+\end{itemize}
+
+Note that when using any of the 'it', 'sf', 'bf', or 'sc' font types it will change the underlining font used. As an example, if it is in a normal text environment it will change the Roman text type, and if it is in a title environment it will change the Sans Serif text type. This can be overwritten using either \verb|\textrm{.}| or \verb|\textsf{.}|, which is why when showing the 'it', 'bf', and 'sc' types of the Sans Serif in the above list it had to be nested. Similarly in a different environment, it would be the Roman text environment that would need to be nested. Note that the order in which one nests these commands does not matter, meaning \verb|\textsf{\textit{.}}| is the same as \verb|\textit{\textsf{.}}|.
+
+\subsubsection{Math Fonts}
+The different Math text types loaded into the document in addition to the above text types are the following
+\begin{itemize}
+    \item \verb|\mathrm{.}|
+    \item \verb|\mathit{.}|
+    \item \verb|\mathbf{.}|
+    \item \verb|\mathnormal{.}|
+    \item \verb|\mathcal{.}|
+    \item \verb|\mathscr{.}|
+    \item \verb|\mathbb{.}|
+    \item \verb|\mathbbm{.}|
+\end{itemize}
+\begin{align*}
+    \mathrm{ABCDEFGHIJKLMNOPQRSTUVWXYZ} &\mathrm{abcdefghijklmnopqrstuvwxyz}, \mathrm{0123456789}\\
+    \mathit{ABCDEFGHIJKLMNOPQRSTUVWXYZ} &\mathit{abcdefghijklmnopqrstuvwxyz}, \mathit{0123456789}\\
+    \mathbf{ABCDEFGHIJKLMNOPQRSTUVWXYZ} &\mathbf{abcdefghijklmnopqrstuvwxyz}, \mathbf{0123456789}\\
+    \mathnormal{ABCDEFGHIJKLMNOPQRSTUVWXYZ} &\mathnormal{abcdefghijklmnopqrstuvwxyz}, \mathnormal{0123456789}\\
+    \mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ} & \\
+    \mathscr{ABCDEFGHIJKLMNOPQRSTUVWXYZ} & \\
+    \mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ} & \\
+    & \mathbbm{abcdefghijklmnopqrstuvwxyz}, \mathbbm{0123456789}
+\end{align*}
+
+\subsubsection{Greek letters}
+The lowercase and uppercase Greek letters
+\begin{itemize}
+    \item {Italic —} $\alpha \beta \gamma \delta \epsilon \varepsilon \zeta \eta \theta \vartheta \iota \kappa \lambda \mu \nu \pi \varpi \rho \varrho \sigma \varsigma \tau \upsilon \phi \varphi \chi \psi \omega $
+    \item {Bold Face —} $\bm{\alpha \beta \gamma \delta \epsilon \varepsilon \zeta \eta \theta \vartheta \iota \kappa \lambda \mu \nu \pi \varpi \rho \varrho \sigma \varsigma \tau \upsilon \phi \varphi \chi \psi \omega}$
+    \item {Italic} — $\Gamma \varGamma \Delta \varDelta \Theta \varTheta \Lambda \varLambda \Xi \varXi \Pi \varPi \Sigma \varSigma \Upsilon \varUpsilon \Phi \varPhi \Psi \varPsi \Omega \varOmega \aleph$
+    \item {Bold Face} — $\bm{\Gamma \varGamma \Delta \varDelta \Theta \varTheta \Lambda \varLambda \Xi \varXi \Pi \varPi \Sigma \varSigma \Upsilon \varUpsilon \Phi \varPhi \Psi \varPsi \Omega \varOmega \aleph}$
+\end{itemize}
+To get the boldface \emph{greek} we have used the \verb|\textbm{.}| command, provided by a specific package I have forgotten the name of.
+
+\subsubsection{Custom Letters}
+In addition to the above font types, there are two custom-made letters of a 'z' with a stroke through. This mimics the often-used written variant of this letter.
+\begin{itemize}
+    \item {\zstroke}  via the command \verb|\zstroke|, can be used in both text and math mode
+    \item {\Zstroke}  via the command \verb|\Zstroke|, can be used in both text and math mode 
+\end{itemize}
+
+\end{document}

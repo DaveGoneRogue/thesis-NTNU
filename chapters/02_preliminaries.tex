@@ -1,0 +1,38 @@
+\documentclass[../thesis.tex]{subfiles}
+% Separate preamble for this subfile. This preamble is loaded last, so one can override various functions before \begin{document}
+
+% Better comment extension for Vscode colors these comments differently
+% Normal comment color
+% * Important information
+% ! ALERT
+% ? Question
+% TODO stuff to do
+% // This is strikethrough
+
+
+\begin{document}
+The preceding introduction showcased how full-fledged text will look like, with some math environments, code comments (only viewable in the \LaTeX editor) and a short overview of highlighting specific text with small-caps and italics. 
+Here is a more detailed overview of a few selected topics.\\
+
+Here is an example of loading a figure with both Tikiz and PNG. 
+%! Figure input here
+\input{figures/figure-tex/tiling_one.tex}
+
+\section{Another figure example}
+    \subfile{02_x1__fig.tex}
+
+\section{Citation and Crossreferencing}
+    \subfile{02_x2__CitCros.tex}
+
+\section{Text types}
+    \subfile{02_x3__texttype.tex}
+
+\section{Math specific commands}
+    \subfile{02_x4__math.tex}
+
+\section{other commands}\label{sec:indicator_zero_set}
+    \subfile{02_x5__OthCom.tex}
+
+\end{document}
+
+

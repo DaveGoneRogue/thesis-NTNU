@@ -1,0 +1,38 @@
+
+%? Note: We have "Clearpage" automatically after the title page
+
+%* Abstract
+\thispagestyle{plain}
+\input{chapters/00_x1__abstract.tex}
+\addcontentsline{toc}{chapter}{Abstract}
+\clearpage
+
+
+%* Preface & acknowledgements
+\ifPRINTING
+    % This puts the quote on the "left double page with the Preface on the right"
+    \input{chapters/00_x2__quote.tex}
+    \chapter*{Preface}
+    \input{chapters/00_x2__preface.tex}
+\else
+    % This puts the quote on the page after the Preface
+    \chapter*{Preface}
+    \input{chapters/00_x2__preface.tex}
+    \input{chapters/00_x2__quote.tex}
+\fi
+
+
+%* Table of contents
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+%! Two-side option
+%! Must manually check whether this is needed depending on length of 'toc'
+% Blank page to avoid having Chapter 1 and 'toc' on the same "double page"
+\ifPRINTING
+    \newpage
+    \thispagestyle{empty}
+    \vspace*{\fill}
+    \clearpage
+\fi
+

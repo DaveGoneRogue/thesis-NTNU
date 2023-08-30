@@ -27,7 +27,6 @@
 % ------------------------------------------------------------------
 % Hyperlinks and References
 % ------------------------------------------------------------------
-
 % test om denne funker
 \usepackage{url}  % prints URLs like they should be in bibtex
 
@@ -53,27 +52,6 @@
 
 %\RequirePackage{sansmath}
 % \DeclareCaptionFont{sansmath}{\sansmath}
-
-\usepackage{caption}
-\captionsetup{
-	format=plain, 	% hang, plain
-	labelformat=simple,	 % default, empty, simple, brace, parens
-	labelfont={bf,up}, 
-	labelsep=colon,	 % none, colon, period, space, quad, newline, endash
-	textformat=simple,  % empty, simple, period
-	justification=justified,  % text alignment: justified, centering, centerlast, centerfirst, raggedright, raggedleft
-	margin=5mm,
-	font={footnotesize, sf, sansmath},  % bf, it, up
-	labelfont={bf},
-	textfont={sf,sansmath},
-%	textfont=up,
-	skip=5mm,  % spacing between captions and content of the environment
-%	singlelinecheck=false  % set automatic text centering on/off 
-}
-
-\usepackage{subcaption}  % enables depiction of several images amongst each other (\subcaptionbox)
-
-\usepackage{placeins}  % Control float placement with /FloatBarrier
 
 
 % ------------------------------------------------------------------
@@ -102,26 +80,6 @@
 
 
 % ------------------------------------------------------------------
-% Code highlighting
-% ------------------------------------------------------------------
-%\lstdefinestyle{Python}{
-%    language        = Python,
-%    frame           = lines, 
-%    basicstyle      = \footnotesize,
-%    keywordstyle    = \color{blue},
-%    stringstyle     = \color{green},
-%    commentstyle    = \color{red}\ttfamily }
-
-
-%\RequirePackage{minted}     % Code highlighting, funket ikke://
-
-%https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
-
-% \mintinline{latex}{\usepackage{minted}}  % in line code example
-
-
-
-% ------------------------------------------------------------------
 % Mathematical expressions
 % ------------------------------------------------------------------
 \let\openbox\relax
@@ -136,11 +94,13 @@
 \usepackage{gensymb}  %  Allows use \degree
 %\usepackage{upgreek}  %  Upright Greek letters
 
+\usetikzlibrary{patterns}
+
+
 \numberwithin{equation}{chapter}
 \RequirePackage{nicefrac}
-%\RequirePackage{bm}  % Has troubles with defining to many symbols
 \RequirePackage{chemformula}
-
+%\usepackage{proof}  %  proof enviroment
 
 % ------------------------------------------------------------------
 % DIV
@@ -151,3 +111,35 @@
 
 \usepackage{listings}  % for kodesnippets
 
+%\usepackage{dirtytalk}  % For quotations. One command: \say{}, will also nest quoations  % Not needed, uses csquotes
+%\usepackage[  % q is ' and  qq is '' while l and r is left and right respectivly
+%   left     = \lq{},  %  g in front, i.e \glqq{} for german notation -> „ text “
+%   right    = \rq{},  %  f in front, i.e \flqq{} for french notation -> « text »
+   %leftsub  = \lqq{}, 
+   %rightsub = \rqq{}
+% ]{dirtytalk}  % For quotations. One command: \say{}, will also nest quoations
+
+
+
+\usepackage[bb=ams,
+frak=mma,
+frakscaled=.97,
+scr=rsfs]{mathalpha}
+
+
+\usepackage{bbm}  % For indicator function
+%\usepackage{dsfont} alternative math fonts? for $\mathds{1}$
+
+%\usepackage{tocloft}
+
+
+% For text with strikethrough and similar
+\usepackage{cancel}
+% \cancel{text to cancel} draws a diagonal line (slash) through its argument
+% \bcancel{text to cancel} uses the negative slope (a backslash)
+% \xcancel{text to cancel} draws an X (actually \cancel plus \bcancel)
+% \cancelto{〈value〉}{〈expression〉} draws a diagonal arrow through the 〈expression〉pointing to the 〈value〉 (math-mode only)
+
+\usepackage[normalem]{ulem}  % The problem that ulem affects some bibliography styles where otherwise italicised text is then underlined can be remedied through the »normalem«-option in the preamble
+% \sout{text to be striked out}
+% \xout{text to be crossed out}

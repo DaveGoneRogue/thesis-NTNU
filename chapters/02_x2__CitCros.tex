@@ -1,0 +1,97 @@
+\documentclass[../thesis.tex]{subfiles}
+% Separate preamble for this subfile. This preamble is loaded last, so one can override various functions before \begin{document}
+
+% Better comment extension for Vscode colors these comments differently
+% Normal comment color
+% * Important information
+% ! ALERT
+% ? Question
+% TODO stuff to do
+% // This is strikethrough
+
+
+\begin{document}
+
+\textbf{Citations}
+
+For citation use either 
+\begin{itemize}
+    \item {\cite{heilIntroductionRealAnalysis2019}} — via the \verb|\cite{heilIntroductionRealAnalysis2019}|
+    \item {\cite[p.~279]{heilIntroductionRealAnalysis2019}} — via the \verb|\cite[p.~279]{heilIntroductionRealAnalysis2019}|
+    \item {\cite{heilMetricsNormsInner2018,heilIntroductionRealAnalysis2019}} — via the\\ \verb|\cite{heilMetricsNormsInner2018,heilIntroductionRealAnalysis2019}| — Note that there cannot be spaces when citing multiple sources in one bracket. 
+    \item {\cite[p.~279, p.~365]{heilMetricsNormsInner2018,heilIntroductionRealAnalysis2019}} — via the\\ \verb|\cite[p.~279, p.~365]{heilMetricsNormsInner2018,heilIntroductionRealAnalysis2019}|
+\end{itemize}
+Here 'heilIntroductionRealAnalysis2019' is the label of this citation in my bibliography. See \cref{chap:tiling} for tips on a bibliography manager (which also will create these labels for you)
+
+
+\textbf{Crossreferencing}
+
+To reference parts of the text the following package \textsc{cleverref} provides smart and useful commands. Before going into the commands it is smart when using the \verb|\label{MyLabel}| command to use the following label groups:
+\begin{itemize}
+    \item For chapters \verb|\label{chap:MyLabel}|
+    \item For sections \verb|\label{sec:MyLabel}|
+    \item For subsections \verb|\label{subsec:MyLabel}|
+    \item For figures \verb|\label{fig:MyLabel}|
+    \item For definition \verb|\label{def:MyLabel}|
+    \item For remark \verb|\label{rem:MyLabel}|
+    \item For theorem \verb|\label{thrm:MyLabel}|
+    \item For lemma \verb|\label{lem:MyLabel}|
+    \item For equation \verb|\label{eq:MyLabel}|
+    \item For examples \verb|\label{ex:MyLabel}|
+    \item etc.
+\end{itemize}
+
+The normal way of crossreferencing anything in the document is via the \verb|\cref{.}| command. Additionally one might only choose to reference either the label via \verb|\labelcref{.}| command or the name via \verb|\namecref{.}| command (which also has 'lcnameref' which produces the output with lowercase letter in front). An advantage of 'nameref' is a case when crossreferencing a specific Theorem which is later changed into a Lemma. In such cases, all discussion that was related to the Theorem will be changed into Lemma automatically. However this also requires the author to be very detailed in the writing so that one does not write Theorem, but rather \verb|\namecref{thrm:main_result}| which gives \namecref{thrm:main_result}. It is not as laborious as it might sound if one gets into the flow early. Also changing the label group is not advised in these cases, that is a laborious change.
+
+Often when referencing equations (not any one of the other reference categories (in general)) one usually only uses the label yielding \labelcref{eq:another_result} instead of \cref{eq:another_result}.
+Furthermore, they can be nested into a "single cref" yielding '\cref{eq:another_result,eq:cool_equation,eq:four}' using 
+\begin{verbatim}
+    \cref{eq:another_result,eq:cool_equation,eq:four} 
+\end{verbatim}
+or only '\labelcref{eq:another_result,eq:cool_equation,eq:four}' via the 'labelcref' using
+\begin{verbatim}
+    \labelcref{eq:another_result,eq:cool_equation,eq:four} 
+\end{verbatim}
+Note that these equations are all subsequent, in the case where one has three non-subsequent equations one will get '\cref{eq:another_result,eq:four,eq:six}' using 
+\begin{verbatim}
+    \cref{eq:another_result,eq:four,eq:six} 
+\end{verbatim}
+or '\labelcref{eq:another_result,eq:four,eq:six}' using
+\begin{verbatim}
+    \labelcref{eq:another_result,eq:four,eq:six} 
+\end{verbatim}
+For two items, one will simply get: \cref{eq:another_result,eq:cool_equation}, or the label variant: \labelcref{eq:another_result,eq:cool_equation}. 
+
+When using \verb|\namecref{.}| on one or multiple items it will simply produce either \namecref{eq:another_result} or \namecref{eq:another_result,eq:four,eq:six}. Meaning, 'nameref' does not support multiple items of the same category.  
+
+\SigridChangeTwo{It is important that there is NO SPACE, only COMMAS separating each item.}
+
+When referencing multiple items from different categories it will look like this: \cref{thrm:main_result,thrm:another_result,lem:another_result,eq:another_result,eq:cool_equation} using the following command
+\begin{verbatim}
+    \cref{thrm:main_result,thrm:another_result,
+           lem:another_result,eq:another_result,eq:cool_equation}
+\end{verbatim}
+Or using 'labelcref':
+\labelcref{thrm:main_result,thrm:another_result,lem:another_result,eq:another_result,eq:cool_equation} or 
+
+or using 'namecref':
+\namecref{thrm:main_result,lem:another_result,eq:another_result}, 
+
+The latter two indicate that when using either 'labelcref' or 'namecref', one needs to split the contents into different references. 
+
+
+Last, the captions in figures \cref{fig:tiling_one} and \cref{fig:tiling_two} highlight a few ways to refer to multiple figures within a figure. This is also illustrated in the following paragraph which also uses 'nameref' + 'cref' when discussing the referenced theorem and conjecture. 
+
+Increasing the dimension by one, we get more flexibility. In particular, when $d=2$, we do not necessarily need to have a lattice tiling as the one in \cref{fig:tiling_one}. We can have tilings where we translate single or multiple \emph{columns} of the unit cube, shown in \cref{fig:single_shift_vertical_tiling,fig:multiple_shift_vertical_tiling}; or single or multiple \emph{rows} of the unit cube, shown in \cref{fig:single_shift_horizontal_tiling,fig:multiple_shift_horizontal_tiling}. In \cref{chap:equivalence}, when classifying all tiling sets in the two-dimensional case, we will show that \cref{fig:tiling_figures} to some extent fully captures the flexibility one has in dimension two. We remark that all \cref{fig:single_shift_vertical_tiling,fig:multiple_shift_vertical_tiling,fig:single_shift_horizontal_tiling,fig:multiple_shift_horizontal_tiling} clearly illustrates that all tilings of the unit cube in $\R^2$ indeed must satisfy both Keller's \namecref{thrm:keller_tiling} and Keller's \namecref{conj:keller_tiling}, the latter of which will be of focus for the remainder of this \namecref{sec:aperi_cube}.
+
+\emph{The following is only included so that the above text works properly.}
+\begin{conjecture}[Keller's \namecref{conj:keller_tiling}]\label{conj:keller_tiling}
+    All tilings of $\R^d$ by translations of the unit cube contain \textsc{two} cubes that share an entire $(d-1)$-dimensional face.
+\end{conjecture}  %* For å kaste lys på at de kan være eksotiske så er det det at de er usant over 7 som er det relevante her. 
+\begin{theorem}[Keller's theorem]\label{thrm:keller_tiling}
+    %Let $\Lambda \subset \R^d$ be a discrete subset.  %* No need to specify, as we will define the tiling set later
+    If $\Lambda$ is a tiling set for the unit cube, then for any two $\lambda, \lambda' \in \Lambda$ with $\lambda\neq\lambda'$, there exist a $j\in \braq{1,\dots,d}$ so that $\lambda_j-\lambda_j' \in \intnozero$.
+\end{theorem}
+\clearpage
+
+\end{document}
