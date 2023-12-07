@@ -18,7 +18,7 @@ You can use the template with [Overleaf](http://overleaf.com), and you are encou
 
 #### Building document locally
 
-First, install the fonts. A "local" copy lies in the folder `Fonts` in the `A Latefx Note Folder`. For Mac users, double-clicking each of the fonts (`.otf`-files) should open up your laptop's font manager for installation. Windows users must copy the fonts (`.otf`-files) into folder `C:\windows\fonts`. Online download link and more info [**here**](https://libertine-fonts.org/download/). For any other font installation problems, "the internet is your friend". 
+First, install the fonts. A "local" copy lies here `A Latefx Note Folder/Fonts`. For Mac users, double-clicking each of the fonts (`.otf`-files) should open up your laptop's font manager for installation. Windows users must copy the fonts (`.otf`-files) into folder `C:\windows\fonts`. Online download link and more info [**here**](https://libertine-fonts.org/download/). For any other font installation problems, "the internet is your friend". 
 
 Option 1: **(Recommended!!)** Run/build the main tex file named `thesis.tex` with your LaTex program of choice, such as Visual Studio Code, Sublime Text, TeXShop, Atom, etc. 
 
